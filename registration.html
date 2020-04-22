@@ -1,9 +1,6 @@
 <html>
 
 <head>
-    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
-
 </head>
 
 <body>
@@ -21,11 +18,13 @@
         <button id="button">Save</button>
     </div>
 
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
     <script src="firebase.js"></script>
     <script>
-
         button.addEventListener("click", function () {
-            
+
             const email = document.getElementById("email").value
             const password = document.getElementById("password").value
             const password2 = document.getElementById("password2").value
@@ -34,16 +33,14 @@
                 alert("hasła są różne")
             }
             else {
-                db.collection("users").add({
-                    email: email,
-                    password: password,
+                firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then(function () {
+                    alert("konto zostało dodane")
                 })
-                    .then(function (docRef) {
-                        alert("Użytkownik został zapisany do bazy");
-                    })
-                    .catch(function (error) {
-                        console.error("Error ", error);
-                    });
+                .catch(function (error) {
+                    console.log(error.code);
+                    console.log(error.message);
+                });
 
             }
 
