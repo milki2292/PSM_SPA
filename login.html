@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+
+</head>
+
+<body>
+    <div id="a">
+        <h4>Email</h4>
+        <input type="textfield" id="email" />
+
+        <h4>Haslo</h4>
+        <input type="textfield" id="password" />
+
+        </br><br>
+        <button id="button">Login</button>
+    </div>
+
+    <script src="firebase.js"></script>
+    <script>
+        button.addEventListener("click", function () {
+
+            const email = document.getElementById("email").value
+            const password = document.getElementById("password").value
+
+            db.collection("users").get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    console.log(email)
+                    if (email == doc.data().email && password == doc.data().password) {
+                        console.log("git")
+                    }
+                });
+            });
+        })
+    </script>
+</body>
+
+</html>
