@@ -1,0 +1,65 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    <div id="a">
+        <h4>Email</h4>
+        <input type="textfield" id="email" />
+
+        <h4>Haslo</h4>
+        <input type="textfield" id="password" />
+
+        <h4>Powtorz haslo</h4>
+        <input type="textfield" id="password2" />
+
+        </br><br>
+        <button id="button">Save</button>
+
+        <br><br>
+        <button id="button1">Register Github</button>
+
+        <br><br>
+        <button id="button2">Register Google</button>
+
+        <br><br>
+        <button id="button3">Register Facebook</button>
+
+        <br><br>
+        <button id="button4">Register Twitter</button>
+
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="firebase.js"></script>
+    <script src="externalSocialNetworksLogin.js"></script>
+    <script>
+        button.addEventListener("click", function () {
+
+            const email = document.getElementById("email").value
+            const password = document.getElementById("password").value
+            const password2 = document.getElementById("password2").value
+
+            if (password != password2) {
+                alert("hasła są różne")
+            }
+            else {
+                firebase.auth().createUserWithEmailAndPassword(email, password)
+                    .then(function () {
+                        alert("konto zostało założone")
+                    })
+                    .catch(function (error) {
+                        console.log(error.code);
+                        console.log(error.message);
+                    });
+
+            }
+        })
+    </script>
+    </script>
+</body>
+
+</html>
