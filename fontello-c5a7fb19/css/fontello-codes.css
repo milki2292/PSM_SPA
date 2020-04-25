@@ -3,6 +3,9 @@
 .icon-yahoo:before { content: '\e801'; } /* '' */
 .icon-food:before { content: '\e802'; } /* '' */
 .icon-heart:before { content: '\e803'; } /* '' */
+.icon-search:before { content: '\e804'; } /* '' */
+.icon-logout:before { content: '\e805'; } /* '' */
+.icon-star-empty:before { content: '\e806'; } /* '' */
 .icon-fast-food:before { content: '\e815'; } /* '' */
 .icon-github-circled:before { content: '\f09b'; } /* '' */
 .icon-youtube:before { content: '\f167'; } /* '' */
