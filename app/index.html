@@ -29,8 +29,6 @@
     <meta name="theme-color" content="#ffffff">
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
 </head>
 
 <body>
@@ -83,12 +81,12 @@
                             "Accept": "application/json",
                             "Content-Type": "application/json",
                             "Authorization": this.API_key,
-                            "Access-Control-Allow-Origin": "*",
+                            // "Access-Control-Allow-Origin": "*",
                         }
                     }
-                    axios
-                        .get(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=${this.location}`, config)
-                        .then(response => (this.results = response.data))
+                    fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=${this.location}`, { headers: config.headers })
+                        .then(response => response.json())
+                        .then(json => this.results = json)
                         .catch(error => console.log(error))
 
                 }
