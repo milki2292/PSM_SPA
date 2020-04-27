@@ -15,21 +15,53 @@
     <link rel="icon" type="image/png" sizes="32x32" href="img/icons//favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="img/icons//favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="img/icons//favicon-16x16.png">
-    <link rel="manifest" href="manifest.json">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./fontello-c5a7fb19/css/fontello.css">
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/main-page.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="icon" href="./img/foo.ico" />
+    <title>Foddy</title>
+    <link rel="manifest" href="./../manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 </head>
 
 <body>
-    <h1>Siema</h1>
-    <a href="login.html">login</a>
-    <br><br>
-    <a href="registration.html">rejestracja</a>
+    <div id="strip">
+        <div id="foddy"><i class="icon-fast-food"></i>Foddy</div>
+    </div>
+
+    <div class="container">
+        <div id="profile">
+            <a href="./user.html" style="text-decoration: none;"><img id="profilepic"
+                    src="./img/service_default_avatar_182956.png"></a>
+            <div style="font-weight: 600;">
+                Profil
+            </div>
+        </div>
+        <div id="motto">
+            <div style="font-weight: 600;">Foddy</div>
+            Jedz gdzie chcesz
+        </div>
+        <div id="logout" style="font-size: 30px; text-decoration: none;">
+            <a href="./login.html"><i class="icon-logout"></i></a>
+        </div>
+        <div id="c"></div>
+        <br>
+        <div id="searchframe">
+            <div id="search">
+                <i class="icon-search"></i>
+                <input type="text" placeholder="Szukaj Restauracji" style="border: none; width: 270px; height: 100%;">
+            </div>
+        </div>
+    </div>
     <script type="text/javascript">
         // Register the service worker
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('service-worker.js').then(function (registration) {
+            navigator.serviceWorker.register('./../service-worker.js').then(function (registration) {
                 // Registration was successful
                 console.log('ServiceWorker registration successful with scope: ', registration.scope);
             }).catch(function (err) {
