@@ -1,2 +1,2 @@
 # PSM_SPA
-Projekt na zaliczenie
+Projekt na zaliczenie\
