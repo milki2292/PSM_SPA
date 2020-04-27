@@ -2,13 +2,13 @@ var cacheVersion = 1;
 var currentCache = {
     offline: 'offline-cache' + cacheVersion
 };
-const offlineUrl = 'offline-page.html';
+const offlineUrl = 'app/offline-page.html';
 
 this.addEventListener('install', event => {
     event.waitUntil(
         caches.open(currentCache.offline).then(function (cache) {
             return cache.addAll([
-                'img/icons/android-icon-192x192.png',
+                'app/img/icons/android-icon-192x192.png',
                 offlineUrl
             ]);
         })
