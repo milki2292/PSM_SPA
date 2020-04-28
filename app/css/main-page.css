@@ -61,3 +61,26 @@ a:link {
 input:focus {
   outline: none;
 }
+#restaurants {
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  margin-top: 15px;
+  box-shadow: 10px 10px 16px -7px rgba(148, 138, 148, 1);
+  height: 210px;
+}
+#res-name{
+  float: left;
+  padding-top: 72px;
+  padding-bottom: 72px;
+  padding-left: 70px;
+  font-size: 22;
+}
+#res-title{
+  float: left;
+  font-size: 20;
+}
+#res-img{
+float: left;
+
+}
