@@ -73,14 +73,19 @@ input:focus {
   float: left;
   padding-top: 72px;
   padding-bottom: 72px;
-  padding-left: 70px;
+  
   font-size: 22;
+  width: 60%;
 }
-/* #res-title{
+#res-title{
   float: left;
-  font-size: 20;
-} */
+  font-size: 22;
+  width: 15%;
+  padding-top: 72px;
+  
+}
 #res-img{
-float: left ;
-
+float: right;
+width: 25%;
+padding-top:10px ;
 }
