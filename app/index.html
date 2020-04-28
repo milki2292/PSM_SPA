@@ -50,8 +50,11 @@
                 Jedz gdzie chcesz
             </div>
             <div id="logout" style="font-size: 30px; text-decoration: none;">
-                <a href="./login.html"><i class="icon-logout"></i></a>
+                <button onclick="logout()"><i class="icon-logout"></i></button>
             </div>
+            <a href="login.html"><button id="login">login</button></a>
+            <a href="registration.html"><button id="register">register</button></a>
+
             <div id="c"></div>
             <br>
             <div id="searchframe">
@@ -65,8 +68,32 @@
             <p v-for="restaurant in results.businesses">{{ restaurant }}</p>
         </div>
     </div>
-    <script src="js/registerService-worker.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-storage.js"></script>
+    <script src="./js/firebase.js"></script>
+
+    <script src="js/logout.js"></script>
     <script>
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                document.getElementById("login").hidden = true
+                document.getElementById("register").hidden = true
+                document.getElementById("profile").hidden = false
+                document.getElementById("logout").hidden = false
+
+
+            }
+            else {
+                document.getElementById("login").hidden = false
+                document.getElementById("register").hidden = false
+                document.getElementById("profile").hidden = true
+                document.getElementById("logout").hidden = true
+            }
+        });
+
+
         new Vue({
             el: "#app",
             data: {
@@ -81,7 +108,6 @@
                             "Accept": "application/json",
                             "Content-Type": "application/json",
                             "Authorization": this.API_key,
-                            // "Access-Control-Allow-Origin": "*",
                         }
                     }
                     fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=${this.location}`, { headers: config.headers })
@@ -95,5 +121,7 @@
         })
     </script>
 </body>
+
+<script src="js/registerService-worker.js"></script>
 
 </html>
