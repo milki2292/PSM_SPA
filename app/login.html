@@ -1,85 +1,78 @@
 <html>
-
-
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./fontello-c5a7fb19/css/fontello.css">
-    <link rel="stylesheet" href="./css/login.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="icon" href="./img/foo.ico" />
-    <title>Foddy</title>
-</head>
-
-<body id="body">
-    <div id="strip">
-        <div id="foddy"><i class="icon-fast-food"></i>Foddy - logowanie</div>
-    </div>
-    <div class="container">
-
-
-        <div id="a">
-            <img src="./img/foo-ico.png" id="icon">
-            <h4></h4>
-            <input type="textfield" id="email" placeholder="Email" />
-            <h4></h4>
-            <input type="password" id="password" placeholder="Hasło" />
-            </br><br>
-            <button id="loginbutton" class="btn btn-login btn-lg btn-block">Zaloguj</button>
-        </div>
-        <div id="v1"></div>
-        <div id="b">
-            <br><br>
-            <button id="button1" class="btn btn-git btn-lg ">Zaloguj z Github <i class="icon-github-circled"></i>
-            </button>
-            <br><br>
-            <button id="button2" class="btn btn-google btn-lg ">Zaloguj z Google <i class="icon-google"></i></button>
-            <br><br>
-            <button id="button3" class="btn btn-fb btn-lg ">Zaloguj z Facebook <i
-                    class="icon-facebook-official"></i></button>
-            <br><br>
-            <button id="button4" class="btn btn-yahoo btn-lg ">Zaloguj z Yahoo <i class="icon-yahoo"></i></button>
-            <br><br>
-
-
-            <div id="text1">Nie masz konta?</div>
-
-            <a href="registration.html" style="text-decoration: none;"><button
-                    class="btn btn-login btn-lg ">Zarejestruj</button></a>
-        </div>
-        <div id="c"></div>
-    </div>
-
-
-    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
-    <script src="./js/firebase.js"></script>
-    <script src="./js/externalSocialNetworksLogin.js"></script>
-    <script>
-
-        firebase.auth().onAuthStateChanged(function (user) {
-            if (user) {
-                window.location = "index.html"
-            }
-        });
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        loginbutton.addEventListener("click", function () {
+        <link rel="stylesheet" href="./fontello-c5a7fb19/css/fontello.css">
+        <link rel="stylesheet" href="./css/login.css">
+        <link rel="icon" href="./img/foo.ico" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-            const email = document.getElementById("email").value
-            const password = document.getElementById("password").value
+        <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+        <script src="./js/firebase.js"></script>
+        <script src="./js/externalSocialNetworksLogin.js"></script>
 
-            firebase.auth().signInWithEmailAndPassword(email, password)
-                .then(function () {
-                    alert("zalogowano")
-                })
-                .catch(function (error) {
-                    console.log(error.code);
-                    console.log(error.message);
-                });
-        })
+        <title>Foddy</title>
+    </head>
 
-    </script>
-</body>
+    <body id="body">
+        <div id="strip">
+            <div id="foddy"><i class="icon-fast-food"></i>Foddy - logowanie</div>
+        </div>
+        <div class="container">
+            <div id="a">
+                <img src="./img/foo-ico.png" id="icon">
+                <input type="textfield" id="email" placeholder="Email" />
+                <input type="password" id="password" placeholder="Hasło" />
+                </br><br>
+                <button id="loginbutton" class="btn btn-login btn-lg btn-block">Zaloguj</button>
+            </div>
+            <div id="v1"></div>
+            <div id="b">
+                <br><br>
+                <button id="button1" class="btn btn-git btn-lg ">Zaloguj z Github <i class="icon-github-circled"></i>
+                </button>
+                <br><br>
+                <button id="button2" class="btn btn-google btn-lg ">Zaloguj z Google <i class="icon-google"></i></button>
+                <br><br>
+                <button id="button3" class="btn btn-fb btn-lg ">Zaloguj z Facebook <i
+                        class="icon-facebook-official"></i></button>
+                <br><br>
+                <button id="button4" class="btn btn-yahoo btn-lg ">Zaloguj z Yahoo <i class="icon-yahoo"></i></button>
+                <br><br>
+
+                <div id="text1">Nie masz konta?</div>
+
+                <a href="registration.html" style="text-decoration: none;"><button
+                        class="btn btn-login btn-lg ">Zarejestruj</button></a>
+            </div>
+            <div id="c"></div>
+        </div>
+
+        <script>
+            firebase.auth().onAuthStateChanged(function (user) {
+                if (user) {
+                    window.location = "index.html"
+                }
+            });
+
+            loginbutton.addEventListener("click", function () {
+
+                const email = document.getElementById("email").value
+                const password = document.getElementById("password").value
+
+                firebase.auth().signInWithEmailAndPassword(email, password)
+                    .then(function () {
+                        alert("zalogowano")
+                    })
+                    .catch(function (error) {
+                        console.log(error.code);
+                        console.log(error.message);
+                    });
+            })
+        </script>
+    </body>
 
 </html>
