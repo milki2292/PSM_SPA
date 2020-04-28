@@ -76,11 +76,11 @@ input:focus {
   padding-left: 70px;
   font-size: 22;
 }
-#res-title{
+/* #res-title{
   float: left;
   font-size: 20;
-}
+} */
 #res-img{
-float: left;
+float: left ;
 
 }

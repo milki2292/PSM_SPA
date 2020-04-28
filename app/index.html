@@ -39,8 +39,8 @@
 
         <div class="container">
             <div id="profile">
-                <a href="./user.html" style="text-decoration: none;"><img id="avatarURL"
-                        src="./img/service_default_avatar_182956.png" width="200" height="200"></a>
+                <a href="./user.html" style="text-decoration: none;"><img id="profilepic"
+                        src="./img/service_default_avatar_182956.png"></a>
                 <div style="font-weight: 600;">
                     Profil
                 </div>
@@ -50,11 +50,8 @@
                 Jedz gdzie chcesz
             </div>
             <div id="logout" style="font-size: 30px; text-decoration: none;">
-                <button onclick="logout()"><i class="icon-logout"></i></button>
+                <a href="./login.html"><i class="icon-logout"></i></a>
             </div>
-            <a href="login.html"><button id="login">login</button></a>
-            <a href="registration.html"><button id="register">register</button></a>
-
             <div id="c"></div>
             <br>
             <div id="searchframe">
@@ -62,38 +59,27 @@
                     <i class="icon-search"></i>
                     <input type="text" placeholder="Szukaj Restauracji"
                         style="border: none; width: 270px; height: 100%;" v-model="location">
-                    <button v-on:click="searchByLocation()">Szukaj</button>
+
                 </div>
+
             </div>
-            <p v-for="restaurant in results.businesses">{{ restaurant }}</p>
+            <br>
+            <button class="btn btn-search btn-lg" v-on:click="searchByLocation()">Szukaj<i
+                    class="icon-search"></i></button>
+            <div v-for="restaurant in results.businesses" id="restaurants">
+                <div id="res-name">{{ restaurant.name }}<br>
+                    {{ restaurant.location.city }}, {{ restaurant.location.address1 }}
+                </div>
+                <div id="res-img">
+                    <img v-bind:src="restaurant.image_url" width="100%" height="100%" />
+                </div>
+                <div id="c"></div>
+            </div>
+
         </div>
     </div>
-    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-storage.js"></script>
-    <script src="./js/firebase.js"></script>
-    <script src="js/displayAvatar.js"></script>
-    <script src="js/logout.js"></script>
+    <script src="js/registerService-worker.js"></script>
     <script>
-        firebase.auth().onAuthStateChanged(function (user) {
-            if (user) {
-                document.getElementById("login").hidden = true
-                document.getElementById("register").hidden = true
-                document.getElementById("profile").hidden = false
-                document.getElementById("logout").hidden = false
-
-
-            }
-            else {
-                document.getElementById("login").hidden = false
-                document.getElementById("register").hidden = false
-                document.getElementById("profile").hidden = true
-                document.getElementById("logout").hidden = true
-            }
-        });
-
-
         new Vue({
             el: "#app",
             data: {
@@ -108,6 +94,7 @@
                             "Accept": "application/json",
                             "Content-Type": "application/json",
                             "Authorization": this.API_key,
+                            // "Access-Control-Allow-Origin": "*",
                         }
                     }
                     fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=${this.location}`, { headers: config.headers })
@@ -121,7 +108,5 @@
         })
     </script>
 </body>
-
-<script src="js/registerService-worker.js"></script>
 
 </html>
