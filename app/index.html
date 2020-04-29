@@ -81,7 +81,7 @@
                 <div id="res-name">{{ restaurant.name }}<br>
                     {{ restaurant.location.city }}, {{ restaurant.location.address1 }}
                 </div>
-                <!-- <div id="res-title">{{restaurant}}</div> -->
+                <div id="res-title">{{restaurant.categories[0].title}}</div> 
                 <div id="res-img">
                     <img v-bind:src="restaurant.image_url" width="100%" height="100%" />
                 </div>
