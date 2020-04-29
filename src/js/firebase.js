@@ -1,4 +1,7 @@
 // Zanim zaczniesz używać usług Firebase, skopiuj i wklej poniższe skrypty na końcu tagu <body>:
+import * as firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
 
   var firebaseConfig = {
     apiKey: "AIzaSyBYad-jIHhVbYIp-hHvUhL2x41MCjpaLDE",
@@ -12,5 +15,5 @@
   };
   
   firebase.initializeApp(firebaseConfig);
-  var db = firebase.firestore();
+  //var db = firebase.firestore();
 
