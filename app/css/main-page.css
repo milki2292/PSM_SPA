@@ -28,7 +28,7 @@ body::after {
 #motto {
   float: left;
   width: 33%;
-  font-size: 30px;
+  font-size: 2.5vw;
 }
 a:link {
   color: rgb(0, 0, 0);
@@ -67,25 +67,25 @@ input:focus {
   border-width: 1px;
   margin-top: 15px;
   box-shadow: 10px 10px 16px -7px rgba(148, 138, 148, 1);
-  height: 210px;
+  height: 23.5%;
 }
 #res-name{
   float: left;
   padding-top: 72px;
   padding-bottom: 72px;
-  
-  font-size: 22;
-  width: 60%;
+  font-size: 2.5vmin;
+  width: 54%;
 }
 #res-title{
   float: left;
-  font-size: 22;
-  width: 15%;
-  padding-top: 72px;
+  font-size: 2.5vmin;
+  width: 19%;
+  padding-top: 80;
   
 }
 #res-img{
 float: right;
 width: 25%;
-padding-top:10px ;
+height: 100%;
+
 }
