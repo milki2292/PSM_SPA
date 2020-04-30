@@ -14,14 +14,12 @@
     <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
-    <link rel="stylesheet" href="../src/assets/fontello-c5a7fb19/css/fontello.css">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>foo.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="../src/assets/fontello-c5a7fb19/css/fontello.css">
     <title><%= htmlWebpackPlugin.options.title %></title>
     <link rel="manifest" href="manifest.json">
     <style>
@@ -49,7 +47,6 @@
     <div id="app"></div>
     <!-- built files will be auto injected -->
     <script>
-      console.log("elo")
        // Register the service worker
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('./service-worker.js').then(function (registration) {
