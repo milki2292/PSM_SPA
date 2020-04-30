@@ -1,27 +1,32 @@
 <html>
-    
-    <head>
-        <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-storage.js"></script>
-        
-        <script src="./js/firebase.js"></script>
-        <script src="./js/displayAvatar.js"></script>
-        <style>
-            #hideAll {
-                position: fixed;
-                left: 0px;
-                right: 0px;
-                top: 0px;
-                bottom: 0px;
-                background-color: white;
-                z-index: 99;
-                /* Higher than anything else in the document */
-    
-            }
-        </style>
-    </head>
+
+<head>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-storage.js"></script>
+    <link rel="stylesheet" href="./fontello-c5a7fb19/css/fontello.css">
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/main-page.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="./js/firebase.js"></script>
+    <script src="./js/displayAvatar.js"></script>
+    <style>
+        #hideAll {
+            position: fixed;
+            left: 0px;
+            right: 0px;
+            top: 0px;
+            bottom: 0px;
+            background-color: white;
+            z-index: 99;
+            /* Higher than anything else in the document */
+
+        }
+    </style>
+</head>
 
 <body>
     <div style="display: none" id="hideAll">&nbsp;</div>
@@ -29,33 +34,37 @@
         document.getElementById("hideAll").style.display = "block";
         window.onload = function () { document.getElementById("hideAll").style.display = "none"; }
     </script>
+    <div id="strip">
+        <div id="foddy"><i class="icon-fast-food"></i>Foddy</div>
+    </div>
+    <div class="container">
     <h1>User</h1>
     <br>
     <img id="avatarURL" src="https://img.pngio.com/parent-directory-avatar-2png-avatar-png-256_256.png" width="200"
-        height="200">
+        height="200" style="border-radius: 50%;">
     <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
 
     <br>
     <br>
     <h4>Zmien email</h4>
-    <input type="textfield" id="newEmail" placeholder="New Email" />
-    <button id="emailBtn" class="btn btn-login btn-lg btn-block">Zmien</button>
+    <input type="textfield" id="newEmail" placeholder="New Email" style="width: 300; height: 40;"/>
+    <button id="emailBtn" class="btn btn-login btn-lg ">Zmien</button>
 
     <h4>Zmien hasło</h4>
-    <input type="textfield" id="newPass" placeholder="New Password" />
-    <button id="passBtn" class="btn btn-login btn-lg btn-block">Zmien</button>
+    <input type="textfield" id="newPass" placeholder="New Password" style="width: 300; height: 40;"/>
+    <button id="passBtn" class="btn btn-login btn-lg ">Zmien</button>
 
     <br>
     <br>
     <br>
     <br>
     <input type="textfield" id="confirmPassEmail" placeholder="Password" hidden />
-    <button id="confirmPassEmailBtn" class="btn btn-login btn-lg btn-block" hidden>Zatwierdź</button>
+    <button id="confirmPassEmailBtn" class="btn btn-login btn-lg " hidden>Zatwierdź</button>
 
     <input type="textfield" id="confirmPassPass" placeholder="Password" hidden />
-    <button id="confirmPassPassBtn" class="btn btn-login btn-lg btn-block" hidden>Zatwierdź</button>
+    <button id="confirmPassPassBtn" class="btn btn-login btn-lg " hidden>Zatwierdź</button>
+</div>
 
-    
     <script src="./js/manageAccount.js"></script>
 </body>
 
