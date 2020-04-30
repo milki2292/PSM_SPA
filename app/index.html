@@ -16,7 +16,6 @@
     <link rel="icon" type="image/png" sizes="96x96" href="img/icons//favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="img/icons//favicon-16x16.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" /> 
     <link rel="stylesheet" href="./fontello-c5a7fb19/css/fontello.css">
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/main-page.css">
@@ -30,10 +29,30 @@
     <meta name="theme-color" content="#ffffff">
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        #hideAll {
+            position: fixed;
+            left: 0px;
+            right: 0px;
+            top: 0px;
+            bottom: 0px;
+            background-color: white;
+            z-index: 99;
+            /* Higher than anything else in the document */
+
+        }
+        
+    </style>
 </head>
 
 <body>
-    <div id="loader" class="center"></div> 
+    
+    <div style="display: none" id="hideAll">&nbsp;</div>
+    <script type="text/javascript">
+        document.getElementById("hideAll").style.display = "block";
+        window.onload = function () { document.getElementById("hideAll").style.display = "none";}
+    </script>
+    
     <div id="app">
         <div id="strip">
             <div id="foddy"><i class="icon-fast-food"></i>Foddy</div>
@@ -72,56 +91,26 @@
                 <div id="res-name">{{ restaurant.name }}<br>
                     {{ restaurant.location.city }}, {{ restaurant.location.address1 }}
                 </div>
-                <div id="res-title">{{restaurant.categories[0].title}}</div> 
+                <div id="res-title">{{restaurant.categories[0].title}}</div>
                 <div id="res-img">
                     <img v-bind:src="restaurant.image_url" width="100%" height="100%" />
                 </div>
                 <div id="c"></div></a>
             </div>
-             
+            <div id="restaurants">
+                <a href="./restaurant.html">
+                    <div id="res-name">{{ restaurant name<br>
+                    {{ restaurantlocationcityrestaur antlocationaddress1 
+                </div>
+                <div id="res-title">title</div>
+                <div id="res-img">
+                    <img src="./img/foo-ico.png" width="90%" height="90%" />
+                </div>
+                <div id="c"></div></a>
+            </div> 
 
         </div>
     </div>
-    <style> 
-        #loader { 
-            border: 12px solid #f3f3f3; 
-            border-radius: 50%; 
-            border-top: 12px solid #444444; 
-            width: 70px; 
-            height: 70px; 
-            animation: spin 1s linear infinite; 
-        } 
-          
-        @keyframes spin { 
-            100% { 
-                transform: rotate(360deg); 
-            } 
-        } 
-          
-        .center { 
-            position: absolute; 
-            top: 0; 
-            bottom: 0; 
-            left: 0; 
-            right: 0; 
-            margin: auto; 
-        } 
-    </style> 
-    <script> 
-        document.onreadystatechange = function() {
-            if (document.readyState !== "complete") {
-                document.querySelector( 
-                  "body").style.visibility = "hidden"; 
-                document.querySelector( 
-                  "#loader").style.visibility = "visible"; 
-            } else { 
-                document.querySelector( 
-                  "#loader").style.display = "none"; 
-                document.querySelector( 
-                  "body").style.visibility = "visible"; 
-            } 
-        }; 
-    </script> 
     <script src="js/registerService-worker.js"></script>
     <script>
         new Vue({
