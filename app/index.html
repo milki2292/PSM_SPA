@@ -20,15 +20,16 @@
     <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/main-page.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="icon" href="./img/foo.ico" />
     <title>Foddy</title>
     <link rel="manifest" href="./../manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-
+    
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<<<<<<< HEAD
     <style>
         #hideAll {
             position: fixed;
@@ -43,6 +44,16 @@
         }
         
     </style>
+=======
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-storage.js"></script>
+    <script src="./js/firebase.js"></script>
+    <script src="js/displayAvatar.js"></script>
+    <script src="js/logout.js"></script>
+    
+>>>>>>> 8d699fe54b57ffa2c4a5ccd8c916bccb48480454
 </head>
 
 <body>
@@ -60,8 +71,8 @@
 
         <div class="container">
             <div id="profile">
-                <a href="./user.html" style="text-decoration: none;"><img id="profilepic"
-                        src="./img/service_default_avatar_182956.png"></a>
+                <a href="./user.html" style="text-decoration: none;"><img id="avatarURL"
+                    src="./img/service_default_avatar_182956.png" width="200" height="200"></a>
                 <div style="font-weight: 600;">
                     Profil
                 </div>
@@ -71,7 +82,10 @@
                 Jedz gdzie chcesz
             </div>
             <div id="logout" style="font-size: 30px; text-decoration: none;">
-                <a href="./login.html"><i class="icon-logout"></i></a>
+                <button onclick="logout()"><i class="icon-logout"></i></button>
+            </div>
+            <a href="login.html"><button id="login">login</button></a>
+            <a href="registration.html"><button id="register">register</button></a>
             </div>
             <div id="c"></div>
             <br>
@@ -98,8 +112,12 @@
                 <div id="c"></div></a>
             </div>
             <div id="restaurants">
+<<<<<<< HEAD
                 <a href="./restaurant.html">
                     <div id="res-name">{{ restaurant name<br>
+=======
+                <div id="res-name">{{ restaurant name<br>
+>>>>>>> 8d699fe54b57ffa2c4a5ccd8c916bccb48480454
                     {{ restaurantlocationcityrestaur antlocationaddress1 
                 </div>
                 <div id="res-title">title</div>
@@ -111,8 +129,25 @@
 
         </div>
     </div>
-    <script src="js/registerService-worker.js"></script>
     <script>
+
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                document.getElementById("login").hidden = true
+                document.getElementById("register").hidden = true
+                document.getElementById("profile").hidden = false
+                document.getElementById("logout").hidden = false
+
+
+            }
+            else {
+                document.getElementById("login").hidden = false
+                document.getElementById("register").hidden = false
+                document.getElementById("profile").hidden = true
+                document.getElementById("logout").hidden = true
+            }
+        });
+
         new Vue({
             el: "#app",
             data: {
@@ -140,6 +175,7 @@
 
         })
     </script>
+    <script src="js/registerService-worker.js"></script>
 </body>
 
 </html>
