@@ -29,6 +29,22 @@
     <meta name="theme-color" content="#ffffff">
     
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<<<<<<< HEAD
+    <style>
+        #hideAll {
+            position: fixed;
+            left: 0px;
+            right: 0px;
+            top: 0px;
+            bottom: 0px;
+            background-color: white;
+            z-index: 99;
+            /* Higher than anything else in the document */
+
+        }
+        
+    </style>
+=======
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
@@ -37,9 +53,17 @@
     <script src="js/displayAvatar.js"></script>
     <script src="js/logout.js"></script>
     
+>>>>>>> 8d699fe54b57ffa2c4a5ccd8c916bccb48480454
 </head>
 
 <body>
+    
+    <div style="display: none" id="hideAll">&nbsp;</div>
+    <script type="text/javascript">
+        document.getElementById("hideAll").style.display = "block";
+        window.onload = function () { document.getElementById("hideAll").style.display = "none";}
+    </script>
+    
     <div id="app">
         <div id="strip">
             <div id="foddy"><i class="icon-fast-food"></i>Foddy</div>
@@ -81,21 +105,26 @@
                 <div id="res-name">{{ restaurant.name }}<br>
                     {{ restaurant.location.city }}, {{ restaurant.location.address1 }}
                 </div>
-                <div id="res-title">{{restaurant.categories[0].title}}</div> 
+                <div id="res-title">{{restaurant.categories[0].title}}</div>
                 <div id="res-img">
                     <img v-bind:src="restaurant.image_url" width="100%" height="100%" />
                 </div>
-                <div id="c"></div>
+                <div id="c"></div></a>
             </div>
             <div id="restaurants">
+<<<<<<< HEAD
+                <a href="./restaurant.html">
+                    <div id="res-name">{{ restaurant name<br>
+=======
                 <div id="res-name">{{ restaurant name<br>
+>>>>>>> 8d699fe54b57ffa2c4a5ccd8c916bccb48480454
                     {{ restaurantlocationcityrestaur antlocationaddress1 
                 </div>
                 <div id="res-title">title</div>
                 <div id="res-img">
                     <img src="./img/foo-ico.png" width="90%" height="90%" />
                 </div>
-                <div id="c"></div>
+                <div id="c"></div></a>
             </div> 
 
         </div>
