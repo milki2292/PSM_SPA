@@ -4,6 +4,8 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Registration from '../views/Registration.vue'
 import User from '../views/User.vue'
+import Restaurant from '../views/Restaurant.vue'
+import UserManagement from '../views/UserManagement.vue'
 
 
 Vue.use(VueRouter)
@@ -33,9 +35,19 @@ Vue.use(VueRouter)
     component: Registration
   },
   {
-    path: '/users/:userId',
+    path: '/user',
     name: 'Users',
     component: User
+  },
+  {
+    path: '/restaurant/:restaurantID',
+    name: 'Restaurant',
+    component: Restaurant
+  },
+  {
+    path: '/userManagement',
+    name: 'UserManagement',
+    component: UserManagement
   }
 
 ]

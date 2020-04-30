@@ -7,20 +7,19 @@
             <h4></h4>
             <input type="password" id="password" placeholder="Hasło" />
             <br><br>
-            <button @click="login" id="loginbutton" class="btn btn-login btn-lg btn-block">Zaloguj</button>
+            <button @click="login" id="loginbutton" class="btn btn-login btn-lg ">Zaloguj</button>
         </div>
         <div id="v1"></div>
         <div id="b">
             <br><br>
-            <button id="button1" class="btn btn-git btn-lg ">Zaloguj z Github <i class="icon-github-circled"></i>
+            <button @click="loginGithub" id="button1" class="btn btn-git btn-lg ">Zaloguj z Github <font-awesome-icon :icon="['fab', 'github']" />
             </button>
             <br><br>
-            <button id="button2" class="btn btn-google btn-lg ">Zaloguj z Google <i class="icon-google"></i></button>
+            <button @click="loginGoogle" id="button2" class="btn btn-google btn-lg ">Zaloguj z Google <font-awesome-icon :icon="['fab', 'google']" /></button>
             <br><br>
-            <button id="button3" class="btn btn-fb btn-lg ">Zaloguj z Facebook <i
-                    class="icon-facebook-official"></i></button>
+            <button @click="loginFacebook" id="button3" class="btn btn-fb btn-lg ">Zaloguj z Facebook <font-awesome-icon :icon="['fab', 'facebook']" /></button>
             <br><br>
-            <button id="button4" class="btn btn-yahoo btn-lg ">Zaloguj z Yahoo <i class="icon-yahoo"></i></button>
+            <button @click="loginYahoo" id="button4" class="btn btn-yahoo btn-lg ">Zaloguj z Yahoo <font-awesome-icon :icon="['fab', 'yahoo']" /></button>
             <br><br>
 
 
@@ -63,7 +62,33 @@ export default {
                     console.log(error.code);
                     console.log(error.message);
                 });
+        },
+        loginGithub(){
+            var githubProvider = new firebase.auth.GithubAuthProvider();
+            this.externalSighnIn(githubProvider)
+        },
+        loginGoogle(){
+            var googleProvider = new firebase.auth.GoogleAuthProvider();
+            this.externalSighnIn(googleProvider)
+        },
+        loginFacebook(){
+            var facebookProvider = new firebase.auth.FacebookAuthProvider();
+            this.externalSighnIn(facebookProvider)
+        },
+        loginYahoo(){
+            var yahooProvider = new firebase.auth.OAuthProvider('yahoo.com');
+            this.externalSighnIn(yahooProvider)
+        },
+        externalSighnIn(provider){
+            firebase.auth().signInWithRedirect(provider);
+            firebase.auth().getRedirectResult().then(function (result) {
+                var user = result.user;
+                console.log(user);
+                }).catch(function (error) {
+                    console.log(error)
+                });
         }
+
     }
 }
 

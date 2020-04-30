@@ -1,16 +1,22 @@
 <template>
     <div id="strip">
-            <div id="foddy"><i class="icon-fast-food"></i>Foddy</div>
+            <div @click="goHome" id="foddy"><font-awesome-icon icon="hamburger" />Foddy</div>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'Header'
+    name: 'Header',
+    methods:{
+        goHome() {
+            const path = '/';
+            if (this.$route.path !== path) this.$router.push(path);
+    },
+    }
 }
 </script>
 
-<style scoped>
+<style>
     #strip {
         text-align: center;
         align-items: center;

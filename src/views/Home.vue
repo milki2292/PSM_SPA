@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <div id="profile">
-        <a href="./user.html" style="text-decoration: none;"
+        <a @click="goUser" style="text-decoration: none;"
           ><img
             id="avatarURL"
             src=".././img/service_default_avatar_182956.png"
@@ -31,7 +31,7 @@
       <br />
       <div id="searchframe">
         <div id="search">
-          <i class="icon-search"></i>
+          <font-awesome-icon icon="search" />
           <input
             type="text"
             placeholder="Szukaj Restauracji"
@@ -42,10 +42,20 @@
       </div>
       <br />
       <button class="btn btn-search btn-lg" v-on:click="searchByLocation()">
-        Szukaj<i class="icon-search"></i>
+        Szukaj<font-awesome-icon icon="search" />
       </button>
+      <div @click="goRestaurant(restaurant.id)" v-bind:key="restaurant.id" v-for="restaurant in results.businesses" id="restaurants">
+          <div id="res-name">{{ restaurant.name }}<br>
+              {{ restaurant.location.city }}, {{ restaurant.location.address1 }}
+          </div>
+          <div id="res-title">{{restaurant.categories[0].title}}</div> 
+          <div id="res-img">
+              <img v-bind:src="restaurant.image_url" width="100%" height="100%" />
+          </div>
+          <div id="c"></div>
+      </div>
+      </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -53,26 +63,24 @@ import * as firebase from "firebase/app";
 import "firebase/auth";
 export default {
   name: "Home",
-  methods: {
-    goLogin() {
-      this.$router.push("/Login");
-    },
-    goRegistration() {
-      this.$router.push("/Registration");
-    },
-    logout() {
-    firebase.auth().signOut()
-        .then(function () {
-            console.log("logout")
-        })
-        .catch(function (error) {
-            console.log(error)
-        })
+  data: function() {
+    return{
+      results: [],
+      location: "",
+      API_key: "Bearer fkbp8a45dtXLiROWZHIh6ruBZVTOtm_oNzqlj2NzfDskFb5HMCFjRBEJgkIgJkv-Q0H7IFkT3LWgzDWoNbjsHnZ5WVECz-Fr5lYhR_hYtE_PAPrrwBNeLgtn-MOmXnYx"
     }
-    
   },
+  created(){
+         firebase.auth().onAuthStateChanged(function (user) {
+            const storageRef = firebase.storage().ref(user.uid + "/avatar/" + "my_avatar")
+            storageRef.getDownloadURL().then(function (url) {
+                document.getElementById("avatarURL").setAttribute("src", url)
+            }).catch(function (error) {
+                console.log(error)
+            })
+})
+     },
   mounted() {
-    
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         document.getElementById("login").hidden = true;
@@ -87,13 +95,52 @@ export default {
       }
     });
   },
+  methods: {
+    goLogin() {
+      this.$router.push("/Login");
+    },
+    
+    goRegistration() {
+      this.$router.push("/Registration");
+    },
+    goRestaurant(id){
+      this.$router.push({path:`/Restaurant/${id}`})
+    },
+    goUser() {
+      this.$router.push("/User");
+    },
+    logout() {
+      firebase.auth().signOut()
+        .then(function () {
+            console.log("logout")
+        })
+        .catch(function (error) {
+            console.log(error)
+        })
+    },
+    searchByLocation: function () {
+      var config = {
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "Authorization": this.API_key,
+        }
+      }
+      fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=${this.location}`, { headers: config.headers })
+          .then(response => response.json())
+          .then(json => this.results = json)
+          .catch(error => console.log(error))
+
+  }
+    
+  },
 };
 </script>
 
 <style>
 body::after {
   content: "";
-  background: url(../img/bground-pizza.jpg);
+  background: url(.././img/bground-pizza.jpg);
   opacity: 0.2;
   top: 0;
   left: 0;
@@ -105,6 +152,27 @@ body::after {
   background-size: cover;
   background-attachment: fixed;
 }
+.container {
+  width: 100%;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 50px;
+}
+.center { 
+  position: absolute; 
+  top: 0; 
+  bottom: 0; 
+  left: 0; 
+  right: 0; 
+  margin: auto; 
+}
+a:link {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+  
+
 #profilepic {
   width: 72px;
   height: 72px;
@@ -121,11 +189,7 @@ body::after {
 #motto {
   float: left;
   width: 33%;
-  font-size: 30px;
-}
-a:link {
-  color: rgb(0, 0, 0);
-  text-decoration: none;
+  font-size: 2.5vw;
 }
 
 #logout > a {
@@ -160,26 +224,48 @@ input:focus {
   border-width: 1px;
   margin-top: 15px;
   box-shadow: 10px 10px 16px -7px rgba(148, 138, 148, 1);
-  height: 210px;
+  height: 23.5%;
 }
-#res-name {
+#res-name{
   float: left;
   padding-top: 72px;
   padding-bottom: 72px;
-  font-size: 22;
-  width: 60%;
+  font-size: 2.5vmin;
+  width: 54%;
 }
-#res-title {
+#res-title{
   float: left;
-  font-size: 22;
-  width: 15%;
-  padding-top: 72px;
+  font-size: 2.5vmin;
+  width: 19%;
+  padding-top: 80;
+  
 }
-#res-img {
-  float: right;
-  width: 25%;
-  padding-top: 10px;
+#res-img{
+float: right;
+width: 25%;
+height: 100%;
+
 }
+
+#restaurants > a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+#loader { 
+  border: 12px solid #f3f3f3; 
+  border-radius: 50%; 
+  border-top: 12px solid #444444; 
+  width: 70px; 
+  height: 70px; 
+  animation: spin 1s linear infinite; 
+} 
+
+@keyframes spin { 
+  100% { 
+      transform: rotate(360deg); 
+  } 
+} 
+
 body {
   justify-content: center;
 }
@@ -195,13 +281,7 @@ body {
   padding-top: 10px;
   color: white;
 }
-.container {
-  width: 100%;
-  align-content: center;
-  align-items: center;
-  text-align: center;
-  margin-top: 50px;
-}
+
 
 #icon {
   margin-top: 52px;
@@ -265,11 +345,12 @@ body {
   text-align: center;
   font-size: 20;
 }
+
 .btn-yahoo {
   background-color: hsl(300, 76%, 11%) !important;
   background-repeat: repeat-x;
   color: #fff !important;
-  width: 300;
+  width: 300px;
 }
 .btn-yahoo:hover,
 .btn-danger:focus,
@@ -297,6 +378,7 @@ body {
   background-repeat: repeat-x;
   color: #fff !important;
   width: 300px;
+  justify-self: center;
 }
 .btn-login:hover,
 .btn-danger:focus,
