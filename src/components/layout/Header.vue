@@ -1,6 +1,6 @@
 <template>
     <div id="strip">
-            <div @click="goHome" id="foddy"><font-awesome-icon icon="hamburger" />Foddy</div>
+            <div @click="goBack" id="foddy"><font-awesome-icon icon="hamburger" />Foddy</div>
     </div>
 </template>
 
@@ -11,7 +11,10 @@ export default {
         goHome() {
             const path = '/';
             if (this.$route.path !== path) this.$router.push(path);
-    },
+        },  
+        goBack(){
+            this.$router.go(-1)
+        }
     }
 }
 </script>
