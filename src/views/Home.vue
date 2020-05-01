@@ -16,7 +16,7 @@
         </div>
       </div>
       <div id="motto">
-        Jedz gdzie chcesz
+        Jedz gdzie chcesz!
       </div>
       <div id="c"></div>
       <br />
@@ -32,19 +32,17 @@
           />
           </div>
           <div id="zakres">
-          <label for="prices">Zakres cenowy </label>
-
-          <select v-model="price" id="prices">
-            <option value="1">Tanie</option>
-            <option value="2">Średnie</option>
-            <option value="3">Drogie</option>
-            <option value="4">Bardzo drogie</option>
-          </select>
+            <select v-model="price" id="price">
+              <option value="" selected disabled >Zakres Cenowy...</option>
+              <option value="1">Tanie</option>
+              <option value="2">Średnie</option>
+              <option value="3">Drogie</option>
+              <option value="4">Bardzo drogie</option>
+            </select>
           </div>
           <div id="sort">
-          <label for="sortBy">Sortuj po </label>
-
           <select v-model="sortBy" id="sortBy">
+            <option value="" selected disabled>Sortuj po...</option>
             <option value="best_match">Najlepszy traf</option>
             <option value="rating">Oceny</option>
             <option value="review_count">Liczbie recenzji</option>
@@ -80,8 +78,8 @@ export default {
     return{
       results: [],
       location: "",
-      price: "1,2,3,4",
-      sortBy: "best_match",
+      price: '',
+      sortBy: '',
       API_key: "Bearer fkbp8a45dtXLiROWZHIh6ruBZVTOtm_oNzqlj2NzfDskFb5HMCFjRBEJgkIgJkv-Q0H7IFkT3LWgzDWoNbjsHnZ5WVECz-Fr5lYhR_hYtE_PAPrrwBNeLgtn-MOmXnYx"
     }
   },
@@ -155,22 +153,78 @@ export default {
 </script>
 
 <style>
+select:required:invalid {
+  color: #666;
+}
+option[value=""][disabled] {
+  display: none;
+}
+option {
+  color: #000;
+}
 
 #local{
+  width:33%;
   float: left;
-  border-right: 1px solid rgb(92, 91, 91);
+  border-right: 10px solid rgb(92, 91, 91);
   padding: 12px;
   
 }
-#zakres{
-  float: left;
-  padding: 7.5px;
-  border-right: 1px solid rgb(92, 91, 91);
+element.style {
+    border: none;
+    width: 90%;
+    height: 100%;
+    text-align: center;
+}
+#zakres {
+    float: none;
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-52%, -50%);
+    width: 34%;
+}
+#price {
+    height: 50px;
+    width: 100%;
+    text-align: justify;
+    border-right: 4px solid rgb(92, 91, 91);
 }
 #sort{
-  float: left;
-  padding: 7.5px;
-  
+  width: 34%;
+  float: right;
+}
+#sortBy{
+    height: 48px;
+    width: 100%;
+    text-align: justify;
+    border-left: 1px solid rgb(92, 91, 91);
+}
+#searchframe {
+  width: 76%;
+  height: 60px;
+  background-color: rgb(92, 100, 100);
+  margin: auto;
+  position: relative;
+}
+#search {
+  background-color: white;
+  margin: auto;
+  width: 97%;
+  height: 80%;
+  overflow: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  clear: both;
+}
+@media screen and (max-width: 1200px){
+  #searchframe{
+    height: 200px;
+    width: 50%;
+  }
 }
 .container {
   width: 100%;
@@ -210,14 +264,15 @@ a:link {
   margin: auto;
 } */
 #motto {
-  float: left;
-  width: 33%;
+  display: inline-block;
+  width: 40%;
   font-size: 2.5vw;
+  font-weight: 600;
 }
 @media screen and (max-width: 800px){
   #motto{
-    float: left;
-    width: 33%;
+    display: inline-block;
+    width: 40%;
     font-size: 5vw;
   }
 }
@@ -226,31 +281,6 @@ a:link {
   color: rgb(0, 0, 0);
   text-decoration: none;
 } */
-#searchframe {
-  width: 76%;
-  height: 60px;
-  background-color: rgb(92, 100, 100);
-  margin: auto;
-  position: relative;
-}
-#search {
-  background-color: white;
-  margin: auto;
-  width: 97%;
-  height: 80%;
-  overflow: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
-@media screen and (max-width: 1200px){
-  #searchframe{
-    height: 200px;
-    width: 50%;
-  }
-}
 input:focus {
   outline: none;
 }
