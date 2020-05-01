@@ -13,16 +13,16 @@
 <br>
         
         <!-- <div> {{this.restaurants[0]}} </div> -->
-        <div id="ulu" >
-        <div id="res-name">{{ this.restaurants[0].name }}<br>
-              {{ this.restaurants[0].location.city }}, {{ this.restaurants[0].location.address1 }}
-          </div>
-          <div id="res-title">{{this.restaurants[0].categories[0].title}}</div> 
-          <div id="res-img">
-              <img v-bind:src="this.restaurants[0].image_url" width="100%" height="100%" />
-          </div>
-          <div id="c"></div>
-        </div>
+        <div v-if="restaurants.length!=0" id="ulu" >
+            <div id="res-name">{{ this.restaurants[0].name }}<br>
+                {{ this.restaurants[0].location.city }}, {{ this.restaurants[0].location.address1 }}
+            </div>
+            <div id="res-title">{{this.restaurants[0].categories[0].title}}</div> 
+            <div id="res-img">
+                <img v-bind:src="this.restaurants[0].image_url" width="100%" height="100%" />
+            </div>
+            <div id="c"></div>
+        </div> 
         
     </div>
 </template>

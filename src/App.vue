@@ -41,7 +41,7 @@ export default {
 <style>
 body::after {
   content: "";
-  background: url(https://source.unsplash.com/random/?food);
+  background: url(https://source.unsplash.com/random/1600x900/?food);
   opacity: 0.4;
   position: fixed; 
   top: 0;
