@@ -6,8 +6,9 @@
           ><img
             id="avatarURL"
             src=".././img/service_default_avatar_182956.png"
-            width="200"
-            height="200"
+            width="50%"
+            height="50%"
+            style="border-radius: 50%;"
         /></a>
 
         <div style="font-weight: 600;">
@@ -163,6 +164,7 @@ export default {
 </script>
 
 <style>
+
 #local{
   float: left;
   border-right: 1px solid rgb(92, 91, 91);
@@ -238,7 +240,7 @@ a:link {
   text-decoration: none;
 }
 #searchframe {
-  width: 800px;
+  width: 75%;
   height: 60px;
   background-color: rgb(92, 100, 100);
   margin: auto;
@@ -278,7 +280,7 @@ input:focus {
   float: left;
   font-size: 2.5vmin;
   width: 19%;
-  padding-top: 80;
+  margin-top: 80px;
   
 }
 #res-img{
