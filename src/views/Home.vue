@@ -157,7 +157,24 @@ export default {
 </script>
 
 <style>
+<<<<<<< HEAD
 
+=======
+body::after {
+  content: "";
+  background: url(https://source.unsplash.com/random/?food);
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+>>>>>>> 2357306c9ca173775b60071b6753db815e6f5acc
 .container {
   width: 100%;
   align-content: center;
