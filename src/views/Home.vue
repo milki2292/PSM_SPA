@@ -16,17 +16,7 @@
         </div>
       </div>
       <div id="motto">
-        <div style="font-weight: 600;">Foddy</div>
         Jedz gdzie chcesz
-      </div>
-      <div id="logout" style="font-size: 30px; text-decoration: none;">
-        <p @click="logout"><font-awesome-icon icon="sign-out-alt" /></p>
-      </div>
-      <div>
-        <a @click="goLogin"><button class="btn btn-search2 btn-lg" id="login">Zaloguj</button></a>
-        <a @click="goRegistration"
-          ><button class="btn btn-search3 btn-lg" id="register">Zarejestruj</button></a
-        >
       </div>
       <div id="c"></div>
       <br />
@@ -64,8 +54,8 @@
       </div>
         </div>
       <br />
-      <button class="btn btn-search btn-lg" v-on:click="searchByLocation()">
-        Szukaj<font-awesome-icon icon="search" />
+      <button class="btn btn-search btn-lg" @click="searchByLocation()">
+        Szukaj <font-awesome-icon icon="search" />
       </button>
       <div @click="goRestaurant(restaurant.id)" v-bind:key="restaurant.id" v-for="restaurant in results.businesses" id="restaurants">
           <div id="res-name">{{ restaurant.name }}<br>
@@ -96,29 +86,30 @@ export default {
     }
   },
   created(){
-         firebase.auth().onAuthStateChanged(function (user) {
-            const storageRef = firebase.storage().ref(user.uid + "/avatar/" + "my_avatar")
-            storageRef.getDownloadURL().then(function (url) {
-                document.getElementById("avatarURL").setAttribute("src", url)
-            }).catch(function (error) {
-                console.log(error)
-            })
-})
-     },
-  mounted() {
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        document.getElementById("login").hidden = true;
-        document.getElementById("register").hidden = true;
-        document.getElementById("profile").hidden = false;
-        document.getElementById("logout").hidden = false;
-      } else {
-        document.getElementById("login").hidden = false;
-        document.getElementById("register").hidden = false;
-        document.getElementById("profile").hidden = true;
-        document.getElementById("logout").hidden = true;
+    firebase.auth().onAuthStateChanged(function (user) {
+      if(user){
+        const storageRef = firebase.storage().ref(user.uid + "/avatar/" + "my_avatar")
+          storageRef.getDownloadURL().then(function (url) {
+          document.getElementById("avatarURL").setAttribute("src", url)
+        }).catch(function (error) {
+          console.log(error)
+        })
       }
+    }),
+    firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            document.getElementById("login").hidden = true;
+            document.getElementById("profile").hidden = false;
+            document.getElementById("logout").hidden = false;
+        } else {
+          document.getElementById("login").hidden = false;
+          document.getElementById("profile").hidden = true;
+          document.getElementById("logout").hidden = true;
+        }
     });
+        
+  },
+      mounted() {
   },
   methods: {
     goLogin() {
@@ -210,11 +201,14 @@ a:link {
   float: left;
   width: 33%;
 }
-#logout {
+#profile:hover{
+  cursor:pointer;
+}
+/* #logout {
   float: left;
   width: 33%;
   margin: auto;
-}
+} */
 #motto {
   float: left;
   width: 33%;
@@ -228,10 +222,10 @@ a:link {
   }
 }
 
-#logout > a {
+/* #logout > a {
   color: rgb(0, 0, 0);
   text-decoration: none;
-}
+} */
 #searchframe {
   width: 76%;
   height: 60px;

@@ -42,7 +42,7 @@ export default {
 body::after {
   content: "";
   background: url(https://source.unsplash.com/random/1600x900/?food);
-  opacity: 0.4;
+  opacity: 0.35;
   position: fixed; 
   top: 0;
   left: 0;
@@ -52,6 +52,7 @@ body::after {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  background-position: center;
 }
 
 .btn-yahoo {
