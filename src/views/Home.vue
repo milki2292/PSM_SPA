@@ -31,14 +31,17 @@
       <br />
       <div id="searchframe">
         <div id="search">
+          <div id="local">
           <font-awesome-icon icon="search" />
           <input
             type="text"
-            placeholder="Lokalizacja"
+            placeholder=" Szukaj"
             style="border: none; width: 270px; height: 100%;"
             v-model="location"
           />
-          <label for="prices">Zakres cenowy</label>
+          </div>
+          <div id="zakres">
+          <label for="prices">Zakres cenowy </label>
 
           <select v-model="price" id="prices">
             <option value="1">Tanie</option>
@@ -46,14 +49,17 @@
             <option value="3">Drogie</option>
             <option value="4">Bardzo drogie</option>
           </select>
-
-          <label for="sortBy">Sortuj po</label>
+          </div>
+          <div id="sort">
+          <label for="sortBy">Sortuj po </label>
 
           <select v-model="sortBy" id="sortBy">
             <option value="best_match">Najlepszy traf</option>
             <option value="rating">Oceny</option>
             <option value="review_count">Liczbie recenzji</option>
           </select>
+          </div>
+          <div id="c"></div>
       </div>
         </div>
       <br />
@@ -157,6 +163,22 @@ export default {
 </script>
 
 <style>
+#local{
+  float: left;
+  border-right: 1px solid rgb(92, 91, 91);
+  padding: 12px;
+  
+}
+#zakres{
+  float: left;
+  padding: 7.5px;
+  border-right: 1px solid rgb(92, 91, 91);
+}
+#sort{
+  float: left;
+  padding: 7.5px;
+  
+}
 body::after {
   content: "";
   background: url(.././img/bground-pizza.jpg);
@@ -216,7 +238,7 @@ a:link {
   text-decoration: none;
 }
 #searchframe {
-  width: 350px;
+  width: 800px;
   height: 60px;
   background-color: rgb(92, 100, 100);
   margin: auto;
