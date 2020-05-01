@@ -9,7 +9,7 @@
             <div>
                 <br>
         <button class="btn btn-login btn-lg" @click="goManagement" >Zarządzaj Kontem</button>
-        </div>
+    </div>
 <br>
         
         <!-- <div> {{this.restaurants[0]}} </div> -->
@@ -22,7 +22,7 @@
               <img v-bind:src="this.restaurants[0].image_url" width="100%" height="100%" />
           </div>
           <div id="c"></div>
-    </div>
+        </div>
         
     </div>
 </template>
