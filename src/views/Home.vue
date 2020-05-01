@@ -20,12 +20,12 @@
         Jedz gdzie chcesz
       </div>
       <div id="logout" style="font-size: 30px; text-decoration: none;">
-        <button @click="logout"><i class="icon-logout"></i></button>
+        <p @click="logout"><font-awesome-icon icon="sign-out-alt" /></p>
       </div>
       <div>
-        <a @click="goLogin"><button id="login">Zaloguj</button></a>
+        <a @click="goLogin"><button class="btn btn-search2 btn-lg" id="login">Zaloguj</button></a>
         <a @click="goRegistration"
-          ><button id="register">Zarejestruj</button></a
+          ><button class="btn btn-search3 btn-lg" id="register">Zarejestruj</button></a
         >
       </div>
       <div id="c"></div>
@@ -240,7 +240,7 @@ a:link {
   text-decoration: none;
 }
 #searchframe {
-  width: 75%;
+  width: 76%;
   height: 60px;
   background-color: rgb(92, 100, 100);
   margin: auto;
@@ -487,4 +487,44 @@ body {
   background-color: hsl(0, 73%, 58%) !important;
   background-repeat: repeat-x;
 }
+.btn-search2 {
+  background-color: hsl(0, 0%, 39%) !important;
+  background-repeat: repeat-x;
+  color: #fff !important;
+  width: 200px;
+  height: 50px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.btn-search2:hover,
+.btn-danger:focus,
+.btn-danger:active,
+.btn-danger.active,
+.open .dropdown-toggle.btn-danger {
+  background-color: hsl(0, 73%, 58%) !important;
+  background-repeat: repeat-x;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.btn-search3 {
+  background-color: hsl(0, 0%, 39%) !important;
+  background-repeat: repeat-x;
+  color: #fff !important;
+  width: 200px;
+  height: 50px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.btn-search3:hover,
+.btn-danger:focus,
+.btn-danger:active,
+.btn-danger.active,
+.open .dropdown-toggle.btn-danger {
+  background-color: hsl(0, 73%, 58%) !important;
+  background-repeat: repeat-x;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
 </style>
+
+
