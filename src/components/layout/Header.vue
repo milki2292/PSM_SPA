@@ -30,7 +30,8 @@ export default {
                 })
         },
         goLogin() {
-            this.$router.push("/Login");
+            const path = '/Login';
+             if (this.$route.path !== path) this.$router.push("/Login");
         },
     }
 }
