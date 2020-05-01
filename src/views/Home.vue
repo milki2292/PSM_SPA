@@ -183,8 +183,8 @@ export default {
 }
 body::after {
   content: "";
-  background: url(.././img/bground-pizza.jpg);
-  opacity: 0.2;
+  background: url(https://source.unsplash.com/random/?food);
+  opacity: 0.5;
   top: 0;
   left: 0;
   bottom: 0;
