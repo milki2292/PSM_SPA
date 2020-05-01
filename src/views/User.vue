@@ -10,10 +10,20 @@
                 <br>
         <button class="btn btn-login btn-lg" @click="goManagement" >Zarządzaj Kontem</button>
         </div>
-
-        <button @click="goManagement">Zarządzaj Kontem</button>
-        <div> {{this.restaurants[0]}} </div>
-
+<br>
+        
+        <!-- <div> {{this.restaurants[0]}} </div> -->
+        <div id="ulu" >
+        <div id="res-name">{{ this.restaurants[0].name }}<br>
+              {{ this.restaurants[0].location.city }}, {{ this.restaurants[0].location.address1 }}
+          </div>
+          <div id="res-title">{{this.restaurants[0].categories[0].title}}</div> 
+          <div id="res-img">
+              <img v-bind:src="this.restaurants[0].image_url" width="100%" height="100%" />
+          </div>
+          <div id="c"></div>
+    </div>
+        
     </div>
 </template>
 
@@ -78,5 +88,8 @@ export default {
 .open .dropdown-toggle.btn-danger {
   background-color: hsl(24, 83%, 45%) !important;
   background-repeat: repeat-x;
+}
+#ulu{
+    background-color: #fff;
 }
 </style>
