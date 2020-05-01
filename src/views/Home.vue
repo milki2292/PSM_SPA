@@ -77,6 +77,7 @@
           </div>
           <div id="c"></div>
       </div>
+      <div hidden id="loader" class="loader"></div>
       </div>
     </div>
 </template>
@@ -96,6 +97,9 @@ export default {
     }
   },
   created(){
+        if(this.$root.$data.results){
+          this.results = this.$root.$data.results
+        }
          firebase.auth().onAuthStateChanged(function (user) {
             const storageRef = firebase.storage().ref(user.uid + "/avatar/" + "my_avatar")
             storageRef.getDownloadURL().then(function (url) {
@@ -144,6 +148,10 @@ export default {
         })
     },
     searchByLocation: function () {
+      var loader = document.getElementById("loader")
+      loader.hidden = false
+     
+      var app = this
       var url = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search"
       var config = {
         headers: {
@@ -154,9 +162,10 @@ export default {
       }
       fetch(`${url}?location=${this.location}&price=${this.price}&sort_by=${this.sortBy}`, { headers: config.headers })
           .then(response => response.json())
-          .then(json => this.results = json)
+          .then(json => app.results = json)
+          .then(() => loader.hidden = true)
+          .then(() => app.$root.$data.results = app.results)
           .catch(error => console.log(error))
-
   }
     
   },
@@ -386,6 +395,20 @@ body {
 #text1 {
   text-align: center;
   font-size: 20;
+}
+
+.loader {
+  border: 10px solid #f3f3f3; /* Light grey */
+  border-top: 10px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 </style>

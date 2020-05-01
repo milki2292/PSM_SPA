@@ -1,4 +1,3 @@
-// Zanim zaczniesz używać usług Firebase, skopiuj i wklej poniższe skrypty na końcu tagu <body>:
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
@@ -16,5 +15,4 @@ import "firebase/storage"
   };
   
   firebase.initializeApp(firebaseConfig);
-  //var db = firebase.firestore();
 
