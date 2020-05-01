@@ -34,12 +34,28 @@
           <font-awesome-icon icon="search" />
           <input
             type="text"
-            placeholder="Szukaj Restauracji"
+            placeholder="Lokalizacja"
             style="border: none; width: 270px; height: 100%;"
             v-model="location"
           />
-        </div>
+          <label for="prices">Zakres cenowy</label>
+
+          <select v-model="price" id="prices">
+            <option value="1">Tanie</option>
+            <option value="2">Średnie</option>
+            <option value="3">Drogie</option>
+            <option value="4">Bardzo drogie</option>
+          </select>
+
+          <label for="sortBy">Sortuj po</label>
+
+          <select v-model="sortBy" id="sortBy">
+            <option value="best_match">Najlepszy traf</option>
+            <option value="rating">Oceny</option>
+            <option value="review_count">Liczbie recenzji</option>
+          </select>
       </div>
+        </div>
       <br />
       <button class="btn btn-search btn-lg" v-on:click="searchByLocation()">
         Szukaj<font-awesome-icon icon="search" />
@@ -67,6 +83,8 @@ export default {
     return{
       results: [],
       location: "",
+      price: "1,2,3,4",
+      sortBy: "best_match",
       API_key: "Bearer fkbp8a45dtXLiROWZHIh6ruBZVTOtm_oNzqlj2NzfDskFb5HMCFjRBEJgkIgJkv-Q0H7IFkT3LWgzDWoNbjsHnZ5WVECz-Fr5lYhR_hYtE_PAPrrwBNeLgtn-MOmXnYx"
     }
   },
@@ -119,6 +137,7 @@ export default {
         })
     },
     searchByLocation: function () {
+      var url = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search"
       var config = {
         headers: {
           "Accept": "application/json",
@@ -126,7 +145,7 @@ export default {
           "Authorization": this.API_key,
         }
       }
-      fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=${this.location}`, { headers: config.headers })
+      fetch(`${url}?location=${this.location}&price=${this.price}&sort_by=${this.sortBy}`, { headers: config.headers })
           .then(response => response.json())
           .then(json => this.results = json)
           .catch(error => console.log(error))
