@@ -8,7 +8,8 @@ this.addEventListener('install', event => {
     event.waitUntil(
         caches.open(currentCache.offline).then(function (cache) {
             return cache.addAll([
-                'app/img/icons/android-icon-192x192.png',
+                './icons/android-icon-192x192.png',
+                '../src/img/bground-pizza.jpg',
                 offlineUrl
             ]);
         })
