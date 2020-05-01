@@ -6,8 +6,9 @@
           ><img
             id="avatarURL"
             src=".././img/service_default_avatar_182956.png"
-            width="200"
-            height="200"
+            width="50%"
+            height="50%"
+            style="border-radius: 50%;"
         /></a>
 
         <div style="font-weight: 600;">
@@ -22,23 +23,26 @@
         <p @click="logout"><font-awesome-icon icon="sign-out-alt" /></p>
       </div>
       <div>
-        <a @click="goLogin"><button id="login">Zaloguj</button></a>
+        <a @click="goLogin"><button class="btn btn-search2 btn-lg" id="login">Zaloguj</button></a>
         <a @click="goRegistration"
-          ><button id="register">Zarejestruj</button></a
+          ><button class="btn btn-search3 btn-lg" id="register">Zarejestruj</button></a
         >
       </div>
       <div id="c"></div>
       <br />
       <div id="searchframe">
         <div id="search">
+          <div id="local">
           <font-awesome-icon icon="search" />
           <input
             type="text"
-            placeholder="Lokalizacja"
+            placeholder=" Szukaj"
             style="border: none; width: 270px; height: 100%;"
             v-model="location"
           />
-          <label for="prices">Zakres cenowy</label>
+          </div>
+          <div id="zakres">
+          <label for="prices">Zakres cenowy </label>
 
           <select v-model="price" id="prices">
             <option value="1">Tanie</option>
@@ -46,14 +50,17 @@
             <option value="3">Drogie</option>
             <option value="4">Bardzo drogie</option>
           </select>
-
-          <label for="sortBy">Sortuj po</label>
+          </div>
+          <div id="sort">
+          <label for="sortBy">Sortuj po </label>
 
           <select v-model="sortBy" id="sortBy">
             <option value="best_match">Najlepszy traf</option>
             <option value="rating">Oceny</option>
             <option value="review_count">Liczbie recenzji</option>
           </select>
+          </div>
+          <div id="c"></div>
       </div>
         </div>
       <br />
@@ -158,6 +165,22 @@ export default {
 
 <style>
 
+#local{
+  float: left;
+  border-right: 1px solid rgb(92, 91, 91);
+  padding: 12px;
+  
+}
+#zakres{
+  float: left;
+  padding: 7.5px;
+  border-right: 1px solid rgb(92, 91, 91);
+}
+#sort{
+  float: left;
+  padding: 7.5px;
+  
+}
 .container {
   width: 100%;
   align-content: center;
@@ -197,13 +220,20 @@ a:link {
   width: 33%;
   font-size: 2.5vw;
 }
+@media screen and (max-width: 800px){
+  #motto{
+    float: left;
+    width: 33%;
+    font-size: 5vw;
+  }
+}
 
 #logout > a {
   color: rgb(0, 0, 0);
   text-decoration: none;
 }
 #searchframe {
-  width: 350px;
+  width: 76%;
   height: 60px;
   background-color: rgb(92, 100, 100);
   margin: auto;
@@ -220,6 +250,13 @@ a:link {
   left: 0;
   bottom: 0;
   right: 0;
+}
+@media screen and (max-width: 800px){
+  #motto{
+    float: left;
+    width: 33%;
+    font-size: 5vw;
+  }
 }
 input:focus {
   outline: none;
@@ -243,7 +280,7 @@ input:focus {
   float: left;
   font-size: 2.5vmin;
   width: 19%;
-  padding-top: 80;
+  margin-top: 80px;
   
 }
 #res-img{
@@ -450,4 +487,44 @@ body {
   background-color: hsl(0, 73%, 58%) !important;
   background-repeat: repeat-x;
 }
+.btn-search2 {
+  background-color: hsl(0, 0%, 39%) !important;
+  background-repeat: repeat-x;
+  color: #fff !important;
+  width: 200px;
+  height: 50px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.btn-search2:hover,
+.btn-danger:focus,
+.btn-danger:active,
+.btn-danger.active,
+.open .dropdown-toggle.btn-danger {
+  background-color: hsl(0, 73%, 58%) !important;
+  background-repeat: repeat-x;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.btn-search3 {
+  background-color: hsl(0, 0%, 39%) !important;
+  background-repeat: repeat-x;
+  color: #fff !important;
+  width: 200px;
+  height: 50px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.btn-search3:hover,
+.btn-danger:focus,
+.btn-danger:active,
+.btn-danger.active,
+.open .dropdown-toggle.btn-danger {
+  background-color: hsl(0, 73%, 58%) !important;
+  background-repeat: repeat-x;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
 </style>
+
+
