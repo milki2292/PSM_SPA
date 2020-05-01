@@ -157,20 +157,7 @@ export default {
 </script>
 
 <style>
-body::after {
-  content: "";
-  background: url(.././img/bground-pizza.jpg);
-  opacity: 0.2;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-}
+
 .container {
   width: 100%;
   align-content: center;
