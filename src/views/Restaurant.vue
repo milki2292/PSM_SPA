@@ -56,13 +56,18 @@ export default {
         "Bearer fkbp8a45dtXLiROWZHIh6ruBZVTOtm_oNzqlj2NzfDskFb5HMCFjRBEJgkIgJkv-Q0H7IFkT3LWgzDWoNbjsHnZ5WVECz-Fr5lYhR_hYtE_PAPrrwBNeLgtn-MOmXnYx",
     };
   },
-  created() {
-    var config = {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: this.API_key,
-      },
+
+  mounted() {
+    this.getRestaurant()
+  },
+  methods: {
+    getRestaurant(){
+      var config = {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: this.API_key,
+        },
     };
     fetch(
       `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/${this.resID}`,
@@ -71,8 +76,7 @@ export default {
       .then((response) => response.json())
       .then((json) => (this.restaurant = json))
       .catch((error) => console.log(error));
-  },
-  methods: {
+    },
     addToFavourites() {
       var user = firebase.auth().currentUser;
       var docRef = this.db.collection("favourites").doc(user.uid);
@@ -133,15 +137,19 @@ export default {
   background-color: hsl(24, 83%, 45%) !important;
   background-repeat: repeat-x;
 }
-#hideAll
- {
-   position: fixed;
-   left: 0px; 
-   right: 0px; 
-   top: 0px; 
-   bottom: 0px; 
-   background-color: white;
-   z-index: 99;
 
- }
+
+ .loader {
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid #3498db; 
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 </style>
