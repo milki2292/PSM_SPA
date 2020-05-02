@@ -36,7 +36,7 @@ Vue.use(VueRouter)
   },
   {
     path: '/user',
-    name: 'Users',
+    name: 'User',
     component: User
   },
   {

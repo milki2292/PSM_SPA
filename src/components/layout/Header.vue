@@ -5,14 +5,17 @@
             Wyloguj  <font-awesome-icon icon="sign-out-alt" />
         </button>
         <button @click="goLogin" class="btn btn-search" id="login">Zaloguj</button>
+        <p id="offline" hidden>offline</p>
     </div>
 </template>
 
 <script>
 import * as firebase from "firebase/app";
 import "firebase/auth";
+
 export default {
     name: 'Header',
+
     methods:{
         goHome() {
             const path = '/';
@@ -33,6 +36,15 @@ export default {
             const path = '/Login';
              if (this.$route.path !== path) this.$router.push("/Login");
         },
+    },    
+    mounted(){
+        window.setInterval(() => {
+           if(!navigator.onLine){
+               document.getElementById("offline").hidden = false
+           } else {
+               document.getElementById("offline").hidden = true
+           }
+        }, 1)
     }
 }
 </script>

@@ -1,25 +1,24 @@
 <template>
     <div class="container">
-        <h1>Profile</h1>
-        <br>
+        <h1>Profil</h1>
         <img style="border-radius:50%" id="avatarURL" src="https://img.pngio.com/parent-directory-avatar-2png-avatar-png-256_256.png" width="200"
             height="200">
-
-            
+        <div id="accountName" style="font-weight: 600;">
+           profil
+        </div>            
             <div>
                 <br>
         <button class="btn btn-login btn-lg" @click="goManagement" >Zarządzaj Kontem</button>
     </div>
 <br>
         
-        <!-- <div> {{this.restaurants[0]}} </div> -->
-        <div v-if="restaurants.length!=0" id="ulu" >
-            <div id="res-name">{{ this.restaurants[0].name }}<br>
-                {{ this.restaurants[0].location.city }}, {{ this.restaurants[0].location.address1 }}
+        <div @click="goRestaurant(restaurant.id)" v-bind:key="restaurant.id" v-for="restaurant in this.restaurants" id="restaurant" >
+            <div id="res-name">{{ restaurant.name }}<br>
+                {{ restaurant.location.city }}, {{ restaurant.location.address1 }}
             </div>
-            <div id="res-title">{{this.restaurants[0].categories[0].title}}</div> 
+            <div id="res-title">{{restaurant.categories[0].title}}</div> 
             <div id="res-img">
-                <img v-bind:src="this.restaurants[0].image_url" width="100%" height="100%" />
+                <img v-bind:src="restaurant.image_url" width="100%" height="100%" />
             </div>
             <div id="c"></div>
         </div> 
@@ -43,6 +42,7 @@ export default {
          var dbRef = this.db.collection("favourites")
 
          firebase.auth().onAuthStateChanged(function (user) {
+             document.getElementById("accountName").innerHTML = user.email
             const storageRef = firebase.storage().ref(user.uid + "/avatar/" + "my_avatar")
             storageRef.getDownloadURL().then(function (url) {
                 document.getElementById("avatarURL").setAttribute("src", url)
@@ -67,8 +67,10 @@ export default {
     methods: {
         goManagement(){
             this.$router.push("/UserManagement");
-        }
-
+        },
+        goRestaurant(id){
+      this.$router.push({path:`/Restaurant/${id}`})
+    },
     }
 
 }
@@ -89,7 +91,7 @@ export default {
   background-color: hsl(24, 83%, 45%) !important;
   background-repeat: repeat-x;
 }
-#ulu{
+#restaurant{
     background-color: #fff;
 }
 </style>

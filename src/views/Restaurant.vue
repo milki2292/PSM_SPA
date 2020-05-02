@@ -35,7 +35,6 @@
     </div>
     <br>
     <p>
-      <!-- {{ this.restaurant }} -->
       <button @click="addToFavourites()" id="favourite" class="btn btn-login btn-lg">
         dodaj do ulubionych
       </button>
@@ -134,4 +133,15 @@ export default {
   background-color: hsl(24, 83%, 45%) !important;
   background-repeat: repeat-x;
 }
+#hideAll
+ {
+   position: fixed;
+   left: 0px; 
+   right: 0px; 
+   top: 0px; 
+   bottom: 0px; 
+   background-color: white;
+   z-index: 99;
+
+ }
 </style>
