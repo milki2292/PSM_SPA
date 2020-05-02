@@ -5,11 +5,12 @@
       src="https://img.pngio.com/parent-directory-avatar-2png-avatar-png-256_256.png"
       width="200"
       height="200"
-      style="border-radius: 50%;"
+      style="border-radius: 50%;object-fit: cover;height: 200px;width: 200px;"
     />
       <div id="accountName" style="font-weight: 600;">
            profil
       </div>  
+    <h4>Zmień Awatar</h4>
     <div>
       <input
         type="file"
@@ -19,13 +20,14 @@
       />
     </div>
     <br />
-    <h4>Zmien email</h4>
+    <h4 id="reenterOldPassword" style="color:red; margin-top:10px; margin-bottom:20px;" hidden>Ponownie wpisz dotychczasowe hasło.</h4>
+    <h4>Zmień adres e-mail</h4>
     <div>
       <input
         style="font-size:25px; width:300px"
         type="textfield"
         id="newEmail"
-        placeholder="New Email"
+        placeholder="Nowy adres e-mail"
       />
       <br />
       <br />
@@ -35,17 +37,17 @@
         id="emailBtn"
         class="btn btn-login btn-lg btn-block"
       >
-        Zmien
+        Zmień
       </button>
       <br />
     </div>
     <div>
-      <h4>Zmien hasło</h4>
+      <h4>Zmień Hasło</h4>
       <input
         style="font-size:25px; width:300px"
         type="textfield"
         id="newPass"
-        placeholder="New Password"
+        placeholder="Nowe Hasło"
       />
       <br />
       <br />
@@ -61,14 +63,18 @@
     <br />
     <br />
     <br />
-    <br />
+    
     <input
+      style="font-size:25px; width:300px; margin-top:30px;"
       type="textfield"
       id="confirmPassEmail"
-      placeholder="Password"
+      placeholder="Wpisz obecne Hasło"
       hidden
     />
+      <br />
+      <br />
     <button
+      style="margin:auto"
       @click="changeEmailReauthenticate"
       id="confirmPassEmailBtn"
       class="btn btn-login btn-lg btn-block"
@@ -78,12 +84,16 @@
     </button>
 
     <input
+      style="font-size:25px; width:300px"
       type="textfield"
       id="confirmPassPass"
-      placeholder="Password"
+      placeholder="Wpisz obecne Hasło"
       hidden
     />
+      <br />
+      <br />
     <button
+      style="margin:auto"
       @click="changePasswordReauthenticate"
       id="confirmPassPassBtn"
       class="btn btn-login btn-lg btn-block"
@@ -152,6 +162,7 @@ export default {
 
             document.getElementById("confirmPassEmail").hidden = false;
             document.getElementById("confirmPassEmailBtn").hidden = false;
+            document.getElementById("reenterOldPassword").hidden = false;
           });
       });
     },
@@ -171,6 +182,7 @@ export default {
               .then(function() {
                 document.getElementById("confirmPassEmail").hidden = true;
                 document.getElementById("confirmPassEmailBtn").hidden = true;
+                document.getElementById("reenterOldPassword").hidden = true;
                 alert("Email changed");
               })
               .catch(function(error) {
@@ -195,6 +207,7 @@ export default {
 
             document.getElementById("confirmPassPass").hidden = false;
             document.getElementById("confirmPassPassBtn").hidden = false;
+            document.getElementById("reenterOldPassword").hidden = false;
           });
       });
     },
@@ -214,6 +227,7 @@ export default {
               .then(function() {
                 document.getElementById("confirmPassPass").hidden = true;
                 document.getElementById("confirmPassPassBtn").hidden = true;
+                document.getElementById("reenterOldPassword").hidden = true;
                 alert("Password changed");
               })
               .catch(function(error) {

@@ -10,7 +10,8 @@
 </template>
 
 <script>
-import Header from './components/layout/Header'
+import Header from './components/layout/Header';
+import * as firebaseapp from "firebase/app";
 import * as firebase from "./js/firebase.js";
 import Unsplash, { toJson } from 'unsplash-js';
 
@@ -36,10 +37,23 @@ export default {
       document.getElementById("backgd").style.backgroundImage = `url(${photoes[Math.floor(Math.random() * photoes.length)].urls.regular})`
 
 
+    firebaseapp.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          document.getElementById("login").hidden = true;
+          document.getElementById("logout").hidden = false;
+          document.getElementById("profile").hidden = false;
+           
+        } else {
+          document.getElementById("login").hidden = false;
+          document.getElementById("logout").hidden = true;
+          document.getElementById("profile").hidden = true;
+        }
+    });
 
   });
+  }
+
   
-  } 
 }
 </script>
 
@@ -67,7 +81,7 @@ export default {
   background-color: hsl(300, 76%, 11%) !important;
   background-repeat: repeat-x;
   color: #fff !important;
-  width: 300px;
+  width: 295px;
 }
 .btn-yahoo:hover,
 .btn-danger:focus,
@@ -94,7 +108,7 @@ export default {
   background-color: hsl(27, 100%, 66%) !important;
   background-repeat: repeat-x;
   color: #fff !important;
-  width: 300px;
+  width: 295px;
   justify-self: center;
 }
 .btn-login:hover,
@@ -109,7 +123,7 @@ export default {
   background-color: hsl(234, 79%, 48%) !important;
   background-repeat: repeat-x;
   color: #fff !important;
-  width: 300px;
+  width: 295px;
 }
 .btn-fb:hover,
 .btn-danger:focus,
@@ -123,7 +137,7 @@ export default {
   background-color: hsl(0, 0%, 40%) !important;
   background-repeat: repeat-x;
   color: #fff !important;
-  width: 300px;
+  width: 295px;
 }
 .btn-git:hover,
 .btn-danger:focus,
@@ -137,7 +151,7 @@ export default {
   background-color: hsl(0, 62%, 46%) !important;
   background-repeat: repeat-x;
   color: #fff !important;
-  width: 300px;
+  width: 295px;
 }
 .btn-google:hover,
 .btn-danger:focus,

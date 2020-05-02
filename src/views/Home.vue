@@ -9,9 +9,7 @@
           ><img
             id="avatarURL"
             src=".././img/service_default_avatar_182956.png"
-            width="50%"
-            height="50%"
-            style="border-radius: 50%;"
+            style="border-radius: 50%;object-fit: cover;height: 120px; width: 120px;"
         /></a>
 
         <div id="accountName" style="font-weight: 600;">
@@ -187,60 +185,71 @@ option {
   color: #000;
 }
 @media screen and (min-width: 1200px) {
-#local{
-  width:33%;
-  float: left;
-  border-right: 10px solid rgb(92, 91, 91);
-  padding: 12px;
-  
-}  
-#zakres {
-    float: none;
-    position: absolute;
-    top: 48%;
-    left: 50%;
-    transform: translate(-52%, -50%);
+  #motto {
+    display: inline-block;
+    width: 100%;
+    font-size: 4vw;
+    font-weight: 600;
+  }
+  #local{
+    width:33%;
+    float: left;
+    border-right: 10px solid rgb(92, 91, 91);
+    padding: 12px;
+    
+  }  
+  #zakres {
+      float: none;
+      position: absolute;
+      top: 48%;
+      left: 50%;
+      transform: translate(-52%, -50%);
+      width: 34%;
+  }
+  #price {
+      height: 50px;
+      width: 100%;
+      text-align: justify;
+      border-right: 4px solid rgb(92, 91, 91);
+  }
+  #sort{
     width: 34%;
-}
-#price {
-    height: 50px;
-    width: 100%;
-    text-align: justify;
-    border-right: 4px solid rgb(92, 91, 91);
-}
-#sort{
-  width: 34%;
-  float: right;
-}
-#sortBy{
-    height: 48px;
-    width: 100%;
-    text-align: justify;
-    border-left: 1px solid rgb(92, 91, 91);
-}
-#searchframe {
-  width: 76%;
-  height: 60px;
-  background-color: rgb(92, 100, 100);
-  margin: auto;
-  position: relative;
-}
-#search {
-  background-color: white;
-  margin: auto;
-  width: 97%;
-  height: 80%;
-  overflow: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  clear: both;
-}
-  
+    float: right;
+  }
+  #sortBy{
+      height: 48px;
+      width: 100%;
+      text-align: justify;
+      border-left: 1px solid rgb(92, 91, 91);
+  }
+  #searchframe {
+    width: 76%;
+    height: 60px;
+    background-color: rgb(92, 100, 100);
+    margin: auto;
+    position: relative;
+  }
+  #search {
+    background-color: white;
+    margin: auto;
+    width: 97%;
+    height: 80%;
+    overflow: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    clear: both;
+  }
 }
 @media screen and (max-width: 1200px){
+  #motto{
+    display: inline-block;
+    width: 100%;
+    font-size: 6.5vw;
+    font-weight: 600;
+  }
   #searchframe {
     height: 150px;
     width: 70%;
@@ -316,8 +325,7 @@ a:link {
   height: 72px;
 }
 #profile {
-  float: left;
-  width: 33%;
+  padding-top: 20px;
 }
 #profile:hover{
   cursor:pointer;
@@ -327,19 +335,7 @@ a:link {
   width: 33%;
   margin: auto;
 } */
-#motto {
-  display: inline-block;
-  width: 100%;
-  font-size: 2.5vw;
-  font-weight: 600;
-}
-@media screen and (max-width: 800px){
-  #motto{
-    display: inline-block;
-    width: 100%;
-    font-size: 5vw;
-  }
-}
+
 
 /* #logout > a {
   color: rgb(0, 0, 0);
@@ -426,10 +422,13 @@ body {
  #b{
    float:none;
  }
+ #v2{
+   display: none;
+ }
 }
 #email {
   margin-top: 100px;
-  width: 320px;
+  width: 295px;
   border: none;
   border-bottom: 2px solid grey;
   border-radius: 5px;
@@ -437,7 +436,7 @@ body {
   font-size: 24px;
 }
 #password {
-  width: 320px;
+  width: 295px;
   border: none;
   border-bottom: 2px solid grey;
   border-radius: 5px;
@@ -445,7 +444,7 @@ body {
   font-size: 24px;
 }
 #password2 {
-  width: 320px;
+  width: 295px;
   border: none;
   border-bottom: 2px solid grey;
   border-radius: 5px;

@@ -4,8 +4,8 @@
         <button @click="logout" id="logout" class="btn btn-search" hidden>
             Wyloguj  <font-awesome-icon icon="sign-out-alt" />
         </button>
-        <button @click="goLogin" class="btn btn-search" id="login">Zaloguj</button>
-        <p id="offline" hidden>offline</p>
+        <button @click="goLogin" class="btn btn-search" id="login" hidden>Zaloguj</button>
+        <p id="offline" hidden>Jesteś Offline</p>
     </div>
 </template>
 
@@ -21,12 +21,16 @@ export default {
             const path = '/';
             if (this.$route.path !== path) this.$router.push(path);
         },
+        goHomea(a) {
+            const path = '/';
+            if (a.path !== path) this.$router.push(path);
+        },
         logout() {
             let a = this.$router;
             firebase.auth().signOut()
                 .then(function () {
                     console.log("logout");
-                    this.goHome(a)('/');
+                    this.goHomea(a)('/');
                 })
                 .catch(function (error) {
                     console.log(error)
@@ -78,4 +82,14 @@ export default {
         text-align: center;
         height: 40px;
     }
+    #offline{
+        display: block;
+        position: absolute;
+        left: 40%;
+        right: 40%;
+        font-size: 4.5vw;
+        font-weight: 700;
+        text-align: center;
+    }
+
 </style>

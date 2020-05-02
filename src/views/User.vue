@@ -1,8 +1,7 @@
 <template>
     <div class="container">
         <h1>Profil</h1>
-        <img style="border-radius:50%" id="avatarURL" src="https://img.pngio.com/parent-directory-avatar-2png-avatar-png-256_256.png" width="200"
-            height="200">
+        <img id="avatarURL" src="https://img.pngio.com/parent-directory-avatar-2png-avatar-png-256_256.png" style="border-radius: 50%;object-fit: cover;height: 200px; width: 200px;">
         <div id="accountName" style="font-weight: 600;">
            profil
         </div>            
