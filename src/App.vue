@@ -1,8 +1,12 @@
 <template>
-  <div id="app">
-    <Header />
-    <router-view/>
+<div id=containterBox>
+  <div id=backgd>
   </div>
+    <div id="app">
+      <Header />
+      <router-view/>
+    </div>
+</div>
 </template>
 
 <script>
@@ -29,18 +33,22 @@ export default {
     unsplash.search.photos("food", 1, 1, { orientation: "portrait" })
     .then(toJson)
     .then(json => {
-      document.body.style.background = `url(${json.results[0].urls.regular})`
+      document.getElementById("backgd").style.backgroundImage = `url(${json.results[0].urls.regular})`
 
 
 
   });
-
+  
   } 
 }
 </script>
 
 <style>
-body::after {
+#app{
+  opacity:2;
+
+}
+#backgd {
   content: "";
   opacity: 0.4;
   position: fixed; 

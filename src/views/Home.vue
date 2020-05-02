@@ -27,7 +27,7 @@
           <input
             type="text"
             placeholder=" Szukaj"
-            style="border: none; width: 33%; height: 100%;"
+            style="border: none; width: 90%; height: 100%;"
             v-model="location"
           />
           </div>
@@ -55,17 +55,19 @@
       <button class="btn btn-search btn-lg" @click="searchByLocation()">
         Szukaj <font-awesome-icon icon="search" />
       </button>
+      <br><br>
+      <div hidden id="loader" class="loader"></div>
       <div @click="goRestaurant(restaurant.id)" v-bind:key="restaurant.id" v-for="restaurant in results.businesses" id="restaurants">
           <div id="res-name">{{ restaurant.name }}<br>
               {{ restaurant.location.city }}, {{ restaurant.location.address1 }}
           </div>
           <div id="res-title">{{restaurant.categories[0].title}}</div> 
           <div id="res-img">
-              <img v-bind:src="restaurant.image_url" width="100%" height="100%" />
+              <img v-bind:src="restaurant.image_url" width="100%" height="100%"/>
           </div>
           <div id="c"></div>
       </div>
-      <div hidden id="loader" class="loader"></div>
+      
       </div>
     </div>
 </template>
@@ -88,7 +90,8 @@ export default {
         if(this.$root.$data.results){
           this.results = this.$root.$data.results
         }
-          firebase.auth().onAuthStateChanged(function (user) {
+        firebase.auth().onAuthStateChanged(function (user) {
+          if(user){
             document.getElementById("accountName").innerHTML = user.email
               const storageRef = firebase.storage().ref(user.uid + "/avatar/" + "my_avatar")
               storageRef.getDownloadURL().then(function (url) {
@@ -96,7 +99,8 @@ export default {
             }).catch(function (error) {
                 console.log(error)
             })
-          })      
+          }      
+        })
     firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
             document.getElementById("login").hidden = true;
@@ -161,6 +165,10 @@ export default {
 </script>
 
 <style>
+#loader {
+  display: inline-block;
+  width: 40%;
+}
 select:required:invalid {
   color: #666;
 }
@@ -177,7 +185,7 @@ option {
   border-right: 10px solid rgb(92, 91, 91);
   padding: 12px;
   
-}
+}  
 element.style {
     border: none;
     width: 90%;
@@ -234,6 +242,7 @@ element.style {
     width: 50%;
   }
 }
+
 .container {
   width: 100%;
   align-content: center;
@@ -298,27 +307,32 @@ input:focus {
   border-width: 1px;
   margin-top: 15px;
   box-shadow: 10px 10px 16px -7px rgba(148, 138, 148, 1);
-  height: 23.5%;
+  height: auto;
 }
-#res-name{
-  float: left;
-  padding-top: 72px;
-  padding-bottom: 72px;
-  font-size: 2.5vmin;
-  width: 54%;
+#restaurants:hover{
+  background-color: #3498db;
 }
-#res-title{
-  float: left;
-  font-size: 2.5vmin;
-  width: 19%;
-  margin-top: 80px;
-  
+#res-title {
+    float: left;
+    font-size: 2.8vmin;
+    width: 19%;
+    margin-top: 5%;
 }
-#res-img{
-float: right;
-width: 25%;
-height: 100%;
-
+#res-name {
+    float: left;
+    font-size: 2.8vmin;
+    font-weight:700;
+    width: 54%;
+    height: 100%;
+    margin-top:5%;
+}
+#res-img {
+    float: right;
+    width: 25%;
+    height: 13vw;
+}
+#res-img > img{
+object-fit: cover;
 }
 
 #restaurants > a {
@@ -360,47 +374,72 @@ body {
 #icon {
   margin-top: 52px;
 }
+
+@media screen and (max-width: 1000px){
+  #v1 {
+    display:none;
+  }
+  #v2{
+    height:500px;
+    float:left;
+    width: 1%;
+  }
+
+}
+@media screen and (max-width: 770px){
+ #a {
+    float: none;
+}
+ #b{
+   float:none;
+ }
+}
 #email {
   margin-top: 100px;
-  width: 350px;
+  width: 320px;
   border: none;
   border-bottom: 2px solid grey;
+  border-radius: 5px;
   margin-bottom: 20px;
   font-size: 24px;
 }
 #password {
-  width: 350px;
+  width: 320px;
   border: none;
   border-bottom: 2px solid grey;
+  border-radius: 5px;
   margin-bottom: 20px;
   font-size: 24px;
 }
 #password2 {
-  width: 350px;
+  width: 320px;
   border: none;
   border-bottom: 2px solid grey;
+  border-radius: 5px;
   margin-bottom: 20px;
   font-size: 24px;
 }
 
 #v1 {
   width: 2%;
-  border-right: 1px solid rgb(218, 218, 218);
+  border-right: 1px solid rgb(59, 57, 57);
   height: 500px;
   float: left;
   left: 48%;
   margin-top: 30px;
   margin-right: 17px;
 }
-#a {
-  align-items: center;
-  text-align: center;
-  width: 45%;
-  /* display: table; */
-  margin: 0 auto;
-  display: table;
-  float: left;
-}
+@media screen and (min-width: 770px) {
+  
+  #a {
+    align-items: center;
+    text-align: center;
+    width: 45%;
+    /* display: table; */
+    margin: 0 auto;
+    display: table;
+    float: left;
+  }
 #b {
   align-items: center;
   text-align: center;
@@ -408,6 +447,7 @@ body {
 
   margin-top: 48px;
   float: left;
+}
 }
 #c {
   clear: both;

@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div id="a">
-            <img src="../img/foo-ico.png" id="icon">
+            <div class="logowanieAwatar"><font-awesome-icon icon="hamburger" />Logowanie</div>
             <h4></h4>
             <input type="textfield" id="email" placeholder="Email" />
             <h4></h4>
@@ -10,6 +10,7 @@
             <button @click="login" id="loginbutton" class="btn btn-login btn-lg ">Zaloguj</button>
         </div>
         <div id="v1"></div>
+        <div id="v2"></div>
         <div id="b">
             <br><br>
             <button @click="loginGithub" id="button1" class="btn btn-git btn-lg ">Zaloguj z Github <font-awesome-icon :icon="['fab', 'github']" />
@@ -95,5 +96,10 @@ export default {
 </script>
 
 <style scoped>
-
+    .logowanieAwatar{
+        width:192px;
+        margin:0 auto;
+        font-size: 32px;
+        padding-top:100px;
+    }
 </style>

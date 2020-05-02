@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div id="a">
-      <img src="../img/foo-ico.png" id="icon" />
+      <div class="rejestracjaAwatar"><font-awesome-icon icon="hamburger" />Rejestracja</div>
       <input type="textfield" id="email" placeholder="Email" />
       <input type="password" id="password" placeholder="Hasło" />
       <input type="password" id="password2" placeholder="Powtórz hasło" />
@@ -103,4 +103,14 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.rejestracjaAwatar{
+        width:192px;
+        margin:0 auto;
+        font-size: 32px;
+        padding-top:20px;
+    }
+#b{
+  margin-top:50px;
+}
+</style>
