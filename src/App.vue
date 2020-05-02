@@ -19,7 +19,6 @@ export default {
   data(){
     return{
       fb: firebase,
-      backgroungPicture: null
     }
   },
   components: {
@@ -30,10 +29,11 @@ export default {
 
     const unsplash = new Unsplash({ accessKey: appAccessKey });
 
-    unsplash.search.photos("food", 1, 1, { orientation: "portrait" })
+    unsplash.search.photos("food", 30, 50, { orientation: "portrait" })
     .then(toJson)
     .then(json => {
-      document.getElementById("backgd").style.backgroundImage = `url(${json.results[0].urls.regular})`
+      let photoes = json.results
+      document.getElementById("backgd").style.backgroundImage = `url(${photoes[Math.floor(Math.random() * photoes.length)].urls.regular})`
 
 
 
