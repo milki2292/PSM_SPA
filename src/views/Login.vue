@@ -3,6 +3,7 @@
         <div id="a">
             <div class="logowanieAwatar"><font-awesome-icon icon="hamburger" />Logowanie</div>
             <h4></h4>
+            <h4 id="invalidLoginPrompt" style="color:red; margin-top:100px;" hidden>Błędny Login i/lub Hasło...</h4>
             <input type="textfield" id="email" placeholder="Email" />
             <h4></h4>
             <input type="password" id="password" placeholder="Hasło" />
@@ -62,6 +63,8 @@ export default {
                 .catch(function (error) {
                     console.log(error.code);
                     console.log(error.message);
+                    document.getElementById("invalidLoginPrompt").hidden = false;
+                    document.getElementById("email").style.marginTop = "10px";
                 });
         },
         loginGithub(){
