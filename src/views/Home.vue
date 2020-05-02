@@ -11,8 +11,8 @@
             style="border-radius: 50%;"
         /></a>
 
-        <div style="font-weight: 600;">
-          Profil
+        <div id="accountName" style="font-weight: 600;">
+           profil
         </div>
       </div>
       <div id="motto">
@@ -101,6 +101,7 @@ export default {
           this.results = this.$root.$data.results
         }
          firebase.auth().onAuthStateChanged(function (user) {
+           document.getElementById("accountName").innerHTML = user.email
             const storageRef = firebase.storage().ref(user.uid + "/avatar/" + "my_avatar")
             storageRef.getDownloadURL().then(function (url) {
                 document.getElementById("avatarURL").setAttribute("src", url)

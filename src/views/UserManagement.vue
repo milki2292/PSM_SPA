@@ -7,6 +7,9 @@
       height="200"
       style="border-radius: 50%;"
     />
+      <div id="accountName" style="font-weight: 600;">
+           profil
+      </div>  
     <div>
       <input
         type="file"
@@ -98,6 +101,7 @@ export default {
   name: "UserManagement",
   created() {
     firebase.auth().onAuthStateChanged(function(user) {
+      document.getElementById("accountName").innerHTML = user.email
       const storageRef = firebase
         .storage()
         .ref(user.uid + "/avatar/" + "my_avatar");

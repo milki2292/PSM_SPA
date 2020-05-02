@@ -1,11 +1,11 @@
 <template>
     <div class="container">
         <h1>Profile</h1>
-        <br>
         <img style="border-radius:50%" id="avatarURL" src="https://img.pngio.com/parent-directory-avatar-2png-avatar-png-256_256.png" width="200"
             height="200">
-
-            
+        <div id="accountName" style="font-weight: 600;">
+           profil
+        </div>            
             <div>
                 <br>
         <button class="btn btn-login btn-lg" @click="goManagement" >Zarządzaj Kontem</button>
@@ -42,6 +42,7 @@ export default {
          var dbRef = this.db.collection("favourites")
 
          firebase.auth().onAuthStateChanged(function (user) {
+             document.getElementById("accountName").innerHTML = user.email
             const storageRef = firebase.storage().ref(user.uid + "/avatar/" + "my_avatar")
             storageRef.getDownloadURL().then(function (url) {
                 document.getElementById("avatarURL").setAttribute("src", url)
