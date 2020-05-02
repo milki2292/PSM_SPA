@@ -29,7 +29,6 @@ export default {
     .then(toJson)
     .then(json => {
       let photoes = json.results
-      console.log(photoes)
       document.body.style.background = `url(${photoes[Math.floor(Math.random() * photoes.length)].urls.regular})`
 
 

@@ -79,8 +79,8 @@ export default {
     return{
       results: [],
       location: "",
-      price: '',
-      sortBy: '',
+      price:"" ,
+      sortBy:"" ,
       API_key: "Bearer fkbp8a45dtXLiROWZHIh6ruBZVTOtm_oNzqlj2NzfDskFb5HMCFjRBEJgkIgJkv-Q0H7IFkT3LWgzDWoNbjsHnZ5WVECz-Fr5lYhR_hYtE_PAPrrwBNeLgtn-MOmXnYx"
     }
   },
@@ -140,7 +140,7 @@ export default {
       loader.hidden = false
      
       var app = this
-      var url = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search"
+      var url = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=${this.location}`
       var config = {
         headers: {
           "Accept": "application/json",
@@ -148,7 +148,15 @@ export default {
           "Authorization": this.API_key,
         }
       }
-      fetch(`${url}?location=${this.location}&price=${this.price}&sort_by=${this.sortBy}`, { headers: config.headers })
+      if(this.price && this.sortBy){
+        url = `${url}&price=${this.price}&sort_by=${this.sortBy}`
+      } else if (this.price){
+        url = `${url}&price=${this.price}`
+      }else if (this.sortBy){
+        `${url}&sort_by=${this.sortBy}`
+      }
+      
+      fetch(url, { headers: config.headers })
           .then(response => response.json())
           .then(json => app.results = json)
           .then(() => loader.hidden = true)
