@@ -11,6 +11,9 @@
             style="border-radius: 50%;"
         /></a>
 
+        <button @click="like()" id="giveLike">Like</button>
+        <p>{{likes}}</p>
+
         <div id="accountName" style="font-weight: 600;">
            profil
         </div>
@@ -77,6 +80,8 @@ export default {
   name: "Home",
   data: function() {
     return{
+      db: firebase.firestore(),
+      likes: 0,
       results: [],
       location: "",
       price:"" ,
@@ -96,9 +101,11 @@ export default {
             }).catch(function (error) {
                 console.log(error)
             })
-          })      
+          })
+          var app = this      
     firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
+            app.checkIfIGiveLike()
             document.getElementById("login").hidden = true;
             document.getElementById("profile").hidden = false;
             document.getElementById("logout").hidden = false;
@@ -106,11 +113,16 @@ export default {
           document.getElementById("login").hidden = false;
           document.getElementById("profile").hidden = true;
           document.getElementById("logout").hidden = true;
+
+
         }
     });
         
   },
       mounted() {
+        window.setInterval(() => {
+        this.displayLikes()
+      },1 )
   },
   methods: {
     goLogin() {
@@ -162,6 +174,37 @@ export default {
           .then(() => loader.hidden = true)
           .then(() => app.$root.$data.results = app.results)
           .catch(error => console.log(error))
+  },
+  displayLikes(){
+    this.db.collection('likes').get().then(
+    snapshot => {
+      let counter = 0
+      snapshot.forEach(() => {
+        counter += 1
+      })
+      this.likes = counter
+      console.log(counter)
+    }
+);
+  },
+  like(){
+    document.getElementById("giveLike").disabled = true
+    var app = this
+    firebase.auth().onAuthStateChanged(function(user) {
+      app.db.collection("likes").doc(user.uid).set({
+      like: true,
+    }) 
+});
+  },
+  checkIfIGiveLike(){
+    let app = this
+    firebase.auth().onAuthStateChanged(function(user) {
+      app.db.collection("likes").doc(user.uid).get().then(function(doc){
+        if(doc.exists){
+          document.getElementById("giveLike").disabled = true
+        }
+      })
+     })
   }
     
   },
