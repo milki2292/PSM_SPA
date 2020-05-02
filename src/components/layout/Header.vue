@@ -1,12 +1,15 @@
 <template>
     <div id="strip">
-            <div @click="goBack" id="foddy"><font-awesome-icon icon="hamburger" />Foddy</div>
+        <div @click="goBack" id="foddy"><font-awesome-icon icon="hamburger" />Foddy</div>
+        <p id="offline" hidden>offline</p>
     </div>
 </template>
 
 <script>
+
 export default {
     name: 'Header',
+
     methods:{
         goHome() {
             const path = '/';
@@ -14,7 +17,17 @@ export default {
         },  
         goBack(){
             this.$router.go(-1)
-        }
+        },
+        
+    },
+    mounted(){
+        window.setInterval(() => {
+           if(!navigator.onLine){
+               document.getElementById("offline").hidden = false
+           } else {
+               document.getElementById("offline").hidden = true
+           }
+        }, 1)
     }
 }
 </script>

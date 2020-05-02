@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h1>Profile</h1>
+        <h1>Profil</h1>
         <img style="border-radius:50%" id="avatarURL" src="https://img.pngio.com/parent-directory-avatar-2png-avatar-png-256_256.png" width="200"
             height="200">
         <div id="accountName" style="font-weight: 600;">
