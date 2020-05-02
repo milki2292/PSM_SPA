@@ -1,7 +1,7 @@
 <template>
     <div id="strip">
         <div @click="goHome" id="foddy"><font-awesome-icon icon="hamburger" />Foddy</div>
-        <button @click="logout" id="logout" class="btn btn-search">
+        <button @click="logout" id="logout" class="btn btn-search" hidden>
             Wyloguj  <font-awesome-icon icon="sign-out-alt" />
         </button>
         <button @click="goLogin" class="btn btn-search" id="login">Zaloguj</button>

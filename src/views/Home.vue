@@ -186,7 +186,7 @@ option[value=""][disabled] {
 option {
   color: #000;
 }
-
+@media screen and (min-width: 1200px) {
 #local{
   width:33%;
   float: left;
@@ -194,12 +194,6 @@ option {
   padding: 12px;
   
 }  
-element.style {
-    border: none;
-    width: 90%;
-    height: 100%;
-    text-align: center;
-}
 #zakres {
     float: none;
     position: absolute;
@@ -244,10 +238,54 @@ element.style {
   right: 0;
   clear: both;
 }
+  
+}
 @media screen and (max-width: 1200px){
-  #searchframe{
-    height: 200px;
-    width: 50%;
+  #searchframe {
+    height: 150px;
+    width: 70%;
+    margin: auto;
+    position: relative;    
+    background-color: rgb(92, 100, 100);
+}
+  #search {
+    background-color: white;
+    margin: auto;
+    width: 96%;
+    height: 93%;
+    overflow: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    clear: both;
+}
+  #local {
+    width: 100%;
+    height: 33%;
+    border-bottom: 5px solid rgb(92, 91, 91);
+    padding: 0px;
+}  
+  #zakres {
+    float: left;
+    height: 33%;
+    width: 100%;
+  }
+  #price {
+    height: 100%;
+    width: 100%;
+    text-align: justify;
+    border-bottom: 5px solid rgb(92, 91, 91);
+  }
+  #sort {
+    height: 35%;
+    width: 100%;
+  } 
+  #sortBy {
+    height: 100%;
+    width: 100%;
+    text-align: justify;
   }
 }
 
