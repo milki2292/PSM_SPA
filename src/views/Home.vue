@@ -25,7 +25,7 @@
           <font-awesome-icon icon="search" />
           <input
             type="text"
-            placeholder=" Szukaj"
+            placeholder=" Lokalizacja"
             style="border: none; width: 90%; height: 100%;"
             v-model="location"
           />

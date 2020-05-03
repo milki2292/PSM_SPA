@@ -10,8 +10,9 @@
         <button class="btn btn-login btn-lg" @click="goManagement" >Zarządzaj Kontem</button>
     </div>
 <br>
+    <p>Ulubione</p>
         
-        <div @click="goRestaurant(restaurant.id)" v-bind:key="restaurant.id" v-for="restaurant in this.restaurants" id="restaurant" >
+        <div @click="goRestaurant(restaurant.id)" v-bind:key="restaurant.id" v-for="restaurant in this.restaurants" class="restaurants" >
             <div id="res-name">{{ restaurant.name }}<br>
                 {{ restaurant.location.city }}, {{ restaurant.location.address1 }}
             </div>
@@ -83,7 +84,20 @@ export default {
   background-color: hsl(24, 83%, 45%) !important;
   background-repeat: repeat-x;
 }
-#restaurant{
-    background-color: #fff;
+.restaurants {
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  margin-top: 15px;
+  box-shadow: 10px 10px 16px -7px rgba(148, 138, 148, 1);
+  height: auto;
+}
+.restaurants:hover{
+  background-color: #e04242;
+  cursor: pointer;
+}
+.restaurants > a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
 }
 </style>
