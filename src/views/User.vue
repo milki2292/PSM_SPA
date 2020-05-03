@@ -10,7 +10,7 @@
         <button class="btn btn-login btn-lg" @click="goManagement" >Zarządzaj Kontem</button>
     </div>
 <br>
-    <p style="font-size:24px">Ulubione</p>
+    <p style="font-size:30px; font-weight:700;">Ulubione:</p>
         
         <div @click="goRestaurant(restaurant.id)" v-bind:key="restaurant.id" v-for="restaurant in this.restaurants" class="restaurants" >
             <div class="res-name">{{ restaurant.name }}<br>

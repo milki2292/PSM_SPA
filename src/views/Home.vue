@@ -13,7 +13,7 @@
           <a @click="goUser" style="text-decoration: none;"
             ><img
               id="avatarURL"
-              src=".././img/service_default_avatar_182956.png"
+              src="https://img.pngio.com/parent-directory-avatar-2png-avatar-png-256_256.png"
               style="border-radius: 50%;object-fit: cover;height: 120px; width: 120px;"
           /></a>
 
