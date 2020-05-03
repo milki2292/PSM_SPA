@@ -29,16 +29,6 @@
       <button @click="loginGoogle" id="button2" class="btn btn-google btn-lg ">
         Zarejestruj z Google <font-awesome-icon :icon="['fab', 'google']" />
       </button>
-
-      <br /><br />
-      <button @click="loginFacebook" id="button3" class="btn btn-fb btn-lg ">
-        Zarejestruj z Facebook <font-awesome-icon :icon="['fab', 'facebook']" />
-      </button>
-
-      <br /><br />
-      <button @click="loginYahoo" id="button4" class="btn btn-yahoo btn-lg ">
-        Zarejestruj z Yahoo <font-awesome-icon :icon="['fab', 'yahoo']" />
-      </button>
     </div>
     <div id="c"></div>
   </div>
@@ -104,14 +94,6 @@ export default {
         loginGoogle(){
             var googleProvider = new firebase.auth.GoogleAuthProvider();
             this.externalSighnIn(googleProvider)
-        },
-        loginFacebook(){
-            var facebookProvider = new firebase.auth.FacebookAuthProvider();
-            this.externalSighnIn(facebookProvider)
-        },
-        loginYahoo(){
-            var yahooProvider = new firebase.auth.OAuthProvider('yahoo.com');
-            this.externalSighnIn(yahooProvider)
         },
         externalSighnIn(provider){
             firebase.auth().signInWithRedirect(provider);
