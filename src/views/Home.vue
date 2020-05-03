@@ -47,7 +47,7 @@
             <option value="review_count">Liczbie recenzji</option>
           </select>
           </div>
-          <div id="c"></div>
+          <div class="c"></div>
       </div>
         </div>
       <br />
@@ -57,14 +57,14 @@
       <br><br>
       <div hidden id="loader" class="loader"></div>
       <div @click="goRestaurant(restaurant.id)" v-bind:key="restaurant.id" v-for="restaurant in results.businesses" class="restaurants">
-          <div id="res-name">{{ restaurant.name }}<br>
+          <div class="res-name">{{ restaurant.name }}<br>
               {{ restaurant.location.city }}, {{ restaurant.location.address1 }}
           </div>
-          <div id="res-title">{{restaurant.categories[0].title}}</div> 
-          <div id="res-img">
+          <div class="res-title">{{restaurant.categories[0].title}}</div> 
+          <div class="res-img">
               <img v-bind:src="restaurant.image_url" width="100%" height="100%"/>
           </div>
-          <div id="c"></div>
+          <div class="c"></div>
       </div>
       
       </div>
@@ -332,13 +332,13 @@ input:focus {
   background-color: #e04242;
   cursor: pointer;
 }
-#res-title {
+.res-title {
     float: left;
     font-size: 2.8vmin;
     width: 19%;
     margin-top: 5%;
 }
-#res-name {
+.res-name {
     float: left;
     font-size: 2.8vmin;
     font-weight:700;
@@ -346,12 +346,12 @@ input:focus {
     height: 100%;
     margin-top:5%;
 }
-#res-img {
+.res-img {
     float: right;
     width: 25%;
     height: 13vw;
 }
-#res-img > img{
+.res-img > img{
 object-fit: cover;
 }
 
@@ -457,7 +457,7 @@ body {
   float: left;
 }
 }
-#c {
+.c {
   clear: both;
 }
 #regbutt {
