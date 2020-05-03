@@ -2,7 +2,7 @@ var cacheVersion = 1;
 var currentCache = {
     offline: 'offline-cache' + cacheVersion
 };
-const offlineUrl = 'offline-page.html';
+const offlineUrl = '/~s207296/Foddy/offline-page.html';
 
 this.addEventListener('install', event => {
     event.waitUntil(

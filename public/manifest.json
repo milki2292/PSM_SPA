@@ -2,7 +2,7 @@
     "name": "Foddy",
     "short_name": "Foddy",
     "lang": "pl-PL",
-    "start_url": "index.html",
+    "start_url": "/~s207296/Foddy/index.html",
     "background_color": "#2C3E50",
     "theme_color": "#18BC9C",
     "display": "standalone",

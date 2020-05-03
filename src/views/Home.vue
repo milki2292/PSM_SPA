@@ -112,7 +112,7 @@ export default {
         var app = this      
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
-            app.checkIfIGiveLike()
+            app.checkIfIGiveLike();
             document.getElementById("login").hidden = true;
             document.getElementById("profile").hidden = false;
             document.getElementById("logout").hidden = false;

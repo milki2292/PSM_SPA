@@ -1,4 +1,5 @@
 {
+  "homepage": "https://wizard.uek.krakow.pl/~s207296/Foddy",
   "name": "spa_psm",
   "version": "0.1.0",
   "private": true,
@@ -15,6 +16,7 @@
     "@fortawesome/vue-fontawesome": "^0.1.9",
     "core-js": "^3.6.4",
     "firebase": "^7.14.2",
+    "serve": "^11.3.0",
     "unsplash-js": "^6.0.0",
     "v-offline": "^1.2.1",
     "vue": "^2.6.11",
