@@ -75,7 +75,6 @@ export default {
     )
       .then((response) => response.json())
       .then((json) => (this.restaurant = json))
-      .catch((error) => console.log(error));
     },
     addToFavourites() {
       var user = firebase.auth().currentUser;
@@ -93,9 +92,6 @@ export default {
               .then(function () {
                 alert("dodano");
               })
-              .catch(function (error) {
-                console.log(error);
-              });
           } else {
             docRef
               .set({
@@ -104,9 +100,6 @@ export default {
               .then(function () {
                 alert("Dodano do ulubionych");
               })
-              .catch(function (error) {
-                console.log(error);
-              });
           }
         });
       }

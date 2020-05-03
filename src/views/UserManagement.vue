@@ -120,9 +120,6 @@ export default {
         .then(function(url) {
           document.getElementById("avatarURL").setAttribute("src", url);
         })
-        .catch(function(error) {
-          console.log(error);
-        });
     });
   },
   mounted() {
@@ -141,9 +138,6 @@ export default {
             .then(function(url) {
               document.getElementById("avatarURL").setAttribute("src", url);
             })
-            .catch(function(error) {
-              console.log(error);
-            });
         });
       });
     });
@@ -157,9 +151,7 @@ export default {
           .then(function() {
             alert("Email changed");
           })
-          .catch(function(error) {
-            console.log(error);
-
+          .catch(function() {
             document.getElementById("confirmPassEmail").hidden = false;
             document.getElementById("confirmPassEmailBtn").hidden = false;
             document.getElementById("reenterOldPassword").hidden = false;
@@ -185,13 +177,7 @@ export default {
                 document.getElementById("reenterOldPassword").hidden = true;
                 alert("Email changed");
               })
-              .catch(function(error) {
-                console.log(error);
-              });
           })
-          .catch(function(error) {
-            console.log(error);
-          });
       });
     },
     changePassword() {
@@ -202,9 +188,7 @@ export default {
           .then(function() {
             alert("Password changed");
           })
-          .catch(function(error) {
-            console.log(error);
-
+          .catch(function() {
             document.getElementById("confirmPassPass").hidden = false;
             document.getElementById("confirmPassPassBtn").hidden = false;
             document.getElementById("reenterOldPassword").hidden = false;
@@ -230,13 +214,7 @@ export default {
                 document.getElementById("reenterOldPassword").hidden = true;
                 alert("Password changed");
               })
-              .catch(function(error) {
-                console.log(error);
-              });
           })
-          .catch(function(error) {
-            console.log(error);
-          });
       });
     },
   },

@@ -45,21 +45,14 @@ export default {
             const storageRef = firebase.storage().ref(user.uid + "/avatar/" + "my_avatar")
             storageRef.getDownloadURL().then(function (url) {
                 document.getElementById("avatarURL").setAttribute("src", url)
-            }).catch(function (error) {
-                console.log(error)
             })
             dbRef.doc(user.uid).get().then(function(doc) {
                 if (doc.exists) {
                     doc.data().restaurants.forEach(el => {
                         restaurants.push(el)
                     })
-                } else {
-                    console.log("Nie ma ulubionych");
-                }
-                }).catch(function(error) {
-                    console.log("Error getting document:", error);
-            });
-
+                } 
+                })
         })
 
      },

@@ -57,12 +57,7 @@ export default {
             const password = document.getElementById("password").value
 
             firebase.auth().signInWithEmailAndPassword(email, password)
-                .then(function () {
-                    alert("zalogowano")
-                })
-                .catch(function (error) {
-                    console.log(error.code);
-                    console.log(error.message);
+                .catch(function () {
                     document.getElementById("invalidLoginPrompt").hidden = false;
                     document.getElementById("email").style.marginTop = "10px";
                 });
@@ -85,12 +80,7 @@ export default {
         },
         externalSighnIn(provider){
             firebase.auth().signInWithRedirect(provider);
-            firebase.auth().getRedirectResult().then(function (result) {
-                var user = result.user;
-                console.log(user);
-                }).catch(function (error) {
-                    console.log(error)
-                });
+            firebase.auth().getRedirectResult()
         }
 
     }

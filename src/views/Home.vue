@@ -56,7 +56,7 @@
       </button>
       <br><br>
       <div hidden id="loader" class="loader"></div>
-      <div @click="goRestaurant(restaurant.id)" v-bind:key="restaurant.id" v-for="restaurant in results.businesses" id="restaurants">
+      <div @click="goRestaurant(restaurant.id)" v-bind:key="restaurant.id" v-for="restaurant in results.businesses" class="restaurants">
           <div id="res-name">{{ restaurant.name }}<br>
               {{ restaurant.location.city }}, {{ restaurant.location.address1 }}
           </div>
@@ -95,8 +95,6 @@ export default {
               const storageRef = firebase.storage().ref(user.uid + "/avatar/" + "my_avatar")
               storageRef.getDownloadURL().then(function (url) {
                 document.getElementById("avatarURL").setAttribute("src", url)
-            }).catch(function (error) {
-                console.log(error)
             })
           }      
         })
@@ -113,8 +111,6 @@ export default {
     });
         
   },
-      mounted() {
-  },
   methods: {
     goLogin() {
       this.$router.push("/Login");
@@ -128,15 +124,6 @@ export default {
     },
     goUser() {
       this.$router.push("/User");
-    },
-    logout() {
-      firebase.auth().signOut()
-        .then(function () {
-            console.log("logout")
-        })
-        .catch(function (error) {
-            console.log(error)
-        })
     },
     searchByLocation: function () {
       var loader = document.getElementById("loader")
@@ -164,7 +151,6 @@ export default {
           .then(json => app.results = json)
           .then(() => loader.hidden = true)
           .then(() => app.$root.$data.results = app.results)
-          .catch(error => console.log(error))
   }
     
   },
@@ -330,21 +316,11 @@ a:link {
 #profile:hover{
   cursor:pointer;
 }
-/* #logout {
-  float: left;
-  width: 33%;
-  margin: auto;
-} */
 
-
-/* #logout > a {
-  color: rgb(0, 0, 0);
-  text-decoration: none;
-} */
 input:focus {
   outline: none;
 }
-#restaurants {
+.restaurants {
   background-color: white;
   border-style: solid;
   border-width: 1px;
@@ -352,8 +328,9 @@ input:focus {
   box-shadow: 10px 10px 16px -7px rgba(148, 138, 148, 1);
   height: auto;
 }
-#restaurants:hover{
-  background-color: #3498db;
+.restaurants:hover{
+  background-color: #e04242;
+  cursor: pointer;
 }
 #res-title {
     float: left;
@@ -378,7 +355,7 @@ input:focus {
 object-fit: cover;
 }
 
-#restaurants > a {
+.restaurants > a {
   color: rgb(0, 0, 0);
   text-decoration: none;
 }
@@ -467,7 +444,6 @@ body {
     align-items: center;
     text-align: center;
     width: 45%;
-    /* display: table; */
     margin: 0 auto;
     display: table;
     float: left;
@@ -493,8 +469,8 @@ body {
 }
 
 .loader {
-  border: 10px solid #f3f3f3; /* Light grey */
-  border-top: 10px solid #d62727; /* Red */
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid #e04242;
   border-radius: 50%;
   width: 80px;
   height: 80px;

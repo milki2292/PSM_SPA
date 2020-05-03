@@ -25,11 +25,7 @@ export default {
             let app = this
             firebase.auth().signOut()
                 .then(function () {
-                    console.log("logout");
                     app.goHome();
-                })
-                .catch(function (error) {
-                    console.log(error)
                 })
         },
         goLogin() {

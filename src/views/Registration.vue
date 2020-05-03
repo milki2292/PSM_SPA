@@ -73,12 +73,7 @@ export default {
             }
             else {
                 firebase.auth().createUserWithEmailAndPassword(email, password)
-                    .then(function () {
-                       alert("zalogowano")
-                    })
                     .catch(function (error) {
-                        console.log(error.code);
-                        console.log(error.message);
                         if(error.code == "auth/weak-password"){
                           document.getElementById("emailAlreadyInUse").hidden = true;
                           document.getElementById("invalidEmailFormat").hidden = true;
@@ -120,12 +115,8 @@ export default {
         },
         externalSighnIn(provider){
             firebase.auth().signInWithRedirect(provider);
-            firebase.auth().getRedirectResult().then(function (result) {
-                var user = result.user;
-                console.log(user);
-                }).catch(function (error) {
-                    console.log(error);
-                });
+            firebase.auth().getRedirectResult()
+
         }
     }
 }
