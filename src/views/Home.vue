@@ -1,72 +1,80 @@
 <template>
   <div>
-    <div class="container">
-      <div id="motto">
-        Jedz gdzie chcesz!
+    <div>
+      <div id="likeContainer" hidden>
+        <button @click="like()" id="giveLike" class="like-btn btn"><font-awesome-icon id="thumbsUp" :icon="['far', 'thumbs-up']" />Like</button>
+        <p id="likeCounter">{{likes}} <font-awesome-icon id="thumbsUp" icon="thumbs-up" /></p>
       </div>
-      <div id="profile">
-        <a @click="goUser" style="text-decoration: none;"
-          ><img
-            id="avatarURL"
-            src=".././img/service_default_avatar_182956.png"
-            style="border-radius: 50%;object-fit: cover;height: 120px; width: 120px;"
-        /></a>
+      <div class="container">
+        <div id="motto">
+          Jedz gdzie chcesz!
+        </div>
+        <div id="profile" hidden>
+          <a @click="goUser" style="text-decoration: none;"
+            ><img
+              id="avatarURL"
+              src=".././img/service_default_avatar_182956.png"
+              style="border-radius: 50%;object-fit: cover;height: 120px; width: 120px;"
+          /></a>
 
-        <div id="accountName" style="font-weight: 600;">
-           profil
-        </div>
-      </div>
-      
-      <div id="c"></div>
-      <br />
-      <div id="searchframe">
-        <div id="search">
-          <div id="local">
-          <font-awesome-icon icon="search" />
-          <input
-            type="text"
-            placeholder=" Lokalizacja"
-            style="border: none; width: 90%; height: 100%;"
-            v-model="location"
-          />
+          
+
+          <div id="accountName" style="font-weight: 600;">
+            profil
           </div>
-          <div id="zakres">
-            <select v-model="price" id="price">
-              <option value="" selected disabled >Zakres Cenowy...</option>
-              <option value="1">Tanie</option>
-              <option value="2">Średnie</option>
-              <option value="3">Drogie</option>
-              <option value="4">Bardzo drogie</option>
+        </div>
+        
+        <div id="c"></div>
+        <br />
+        <div id="searchframe">
+          <div id="search">
+            <div id="local">
+            <font-awesome-icon icon="search" />
+            <input
+              type="text"
+              placeholder=" Lokalizacja"
+              style="border: none; width: 90%; height: 100%;"
+              v-model="location"
+            />
+            </div>
+            <div id="zakres">
+              <select v-model="price" id="price">
+                <option value="" selected disabled >Zakres Cenowy...</option>
+                <option value="1">Tanie</option>
+                <option value="2">Średnie</option>
+                <option value="3">Drogie</option>
+                <option value="4">Bardzo drogie</option>
+              </select>
+            </div>
+            <div id="sort">
+            <select v-model="sortBy" id="sortBy">
+              <option value="" selected disabled>Sortuj po...</option>
+              <option value="best_match">Najlepszy traf</option>
+              <option value="rating">Oceny</option>
+              <option value="review_count">Liczbie recenzji</option>
             </select>
-          </div>
-          <div id="sort">
-          <select v-model="sortBy" id="sortBy">
-            <option value="" selected disabled>Sortuj po...</option>
-            <option value="best_match">Najlepszy traf</option>
-            <option value="rating">Oceny</option>
-            <option value="review_count">Liczbie recenzji</option>
-          </select>
-          </div>
-          <div class="c"></div>
-      </div>
+            </div>
+            <div class="c"></div>
         </div>
-      <br />
-      <button class="btn btn-search btn-lg" @click="searchByLocation()">
-        Szukaj <font-awesome-icon icon="search" />
-      </button>
-      <br><br>
-      <div hidden id="loader" class="loader"></div>
-      <div @click="goRestaurant(restaurant.id)" v-bind:key="restaurant.id" v-for="restaurant in results.businesses" class="restaurants">
-          <div class="res-name">{{ restaurant.name }}<br>
-              {{ restaurant.location.city }}, {{ restaurant.location.address1 }}
           </div>
-          <div class="res-title">{{restaurant.categories[0].title}}</div> 
-          <div class="res-img">
-              <img v-bind:src="restaurant.image_url" width="100%" height="100%"/>
-          </div>
-          <div class="c"></div>
-      </div>
-      
+        <br />
+        <button class="btn btn-search btn-lg" @click="searchByLocation()">
+          Szukaj <font-awesome-icon icon="search" />
+        </button>
+        <br><br>
+        <div hidden id="loader" class="loader"></div>
+        <div @click="goRestaurant(restaurant.id)" v-bind:key="restaurant.id" v-for="restaurant in results.businesses" class="restaurants">
+            <div class="res-name">{{ restaurant.name }}<br>
+                {{ restaurant.location.city }}, {{ restaurant.location.address1 }}
+            </div>
+            <div class="res-title">{{restaurant.categories[0].title}}</div> 
+            <div class="res-img">
+                <img v-bind:src="restaurant.image_url" width="100%" height="100%"/>
+            </div>
+            <div class="c"></div>
+        </div>
+        
+        </div>
       </div>
     </div>
 </template>
@@ -78,6 +86,8 @@ export default {
   name: "Home",
   data: function() {
     return{
+      db: firebase.firestore(),
+      likes: 0,
       results: [],
       location: "",
       price:"" ,
@@ -98,18 +108,31 @@ export default {
             })
           }      
         })
-    firebase.auth().onAuthStateChanged(function(user) {
+          
+        var app = this      
+        firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
+            app.checkIfIGiveLike()
             document.getElementById("login").hidden = true;
             document.getElementById("profile").hidden = false;
             document.getElementById("logout").hidden = false;
+            document.getElementById("likeContainer").hidden = false;
         } else {
           document.getElementById("login").hidden = false;
           document.getElementById("profile").hidden = true;
           document.getElementById("logout").hidden = true;
+          document.getElementById("likeContainer").hidden = true;
+
+
         }
     });
+
         
+  },
+      mounted() {
+        window.setInterval(() => {
+        this.displayLikes()
+      },1 )
   },
   methods: {
     goLogin() {
@@ -151,6 +174,37 @@ export default {
           .then(json => app.results = json)
           .then(() => loader.hidden = true)
           .then(() => app.$root.$data.results = app.results)
+  },
+  displayLikes(){
+    this.db.collection('likes').get().then(
+    snapshot => {
+      let counter = 0
+      snapshot.forEach(() => {
+        counter += 1
+      })
+      this.likes = counter
+    }
+);
+  },
+  like(){
+    document.getElementById("giveLike").disabled = true
+    var app = this
+    firebase.auth().onAuthStateChanged(function(user) {
+      app.db.collection("likes").doc(user.uid).set({
+      like: true,
+    }) 
+});
+  },
+  checkIfIGiveLike(){
+    let app = this
+    firebase.auth().onAuthStateChanged(function(user) {
+      app.db.collection("likes").doc(user.uid).get().then(function(doc){
+        if(doc.exists){
+          document.getElementById("giveLike").disabled = true
+          document.getElementById("giveLike").innerHTML ="Liked!"
+        }
+      })
+     })
   }
     
   },
@@ -158,6 +212,39 @@ export default {
 </script>
 
 <style>
+#likeContainer{
+    margin: 7px;
+    padding-bottom: 20px;
+}
+.like-btn{
+  float: left;
+  width: auto;
+  background-color: hsl(0, 0%, 39%) !important;
+  background-repeat: repeat-x;
+  color: #fff !important;
+}
+.like-btn:hover{
+  float: left;
+  width: auto;
+  background-color: hsl(0, 73%, 58%) !important;
+  background-repeat: repeat-x;
+  color: #fff !important;
+}
+.like-btn:disabled{
+  float: left;
+  width: auto;
+  background-color: hsl(0, 0%, 39%) !important;
+  background-repeat: repeat-x;
+  color: #fff !important;
+}
+#likeCounter{    
+  float: left;
+  padding-top: 6px;
+  margin: auto;
+  margin-left: 15px;
+  font-weight: 600;
+  font-size: 10;
+}
 #loader {
   display: inline-block;
 }

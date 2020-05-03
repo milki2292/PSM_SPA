@@ -165,7 +165,7 @@ export default {
   background-color: hsl(0, 0%, 39%) !important;
   background-repeat: repeat-x;
   color: #fff !important;
-  width: 350px;
+  width: 295px;
 }
 .btn-search:hover,
 .btn-danger:focus,
