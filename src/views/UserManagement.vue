@@ -57,7 +57,7 @@
         id="passBtn"
         class="btn btn-login btn-lg btn-block"
       >
-        Zmien
+        Zmień
       </button>
     </div>
     <br />
