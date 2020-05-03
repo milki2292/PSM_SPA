@@ -90,7 +90,7 @@ export default {
                 ),
               })
               .then(function () {
-                alert("dodano");
+                alert("Dodano do ulubionych");
               })
           } else {
             docRef
