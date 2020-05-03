@@ -74,14 +74,62 @@ export default {
         text-align: center;
         height: 40px;
     }
-    #offline{
-        display: block;
-        position: absolute;
-        left: 40%;
-        right: 40%;
-        font-size: 4.5vw;
-        font-weight: 700;
-        text-align: center;
+    @media screen and (max-width: 475px) {
+        #offline{
+            display: block;
+            position: absolute;
+            left: 40%;
+            right: 40%;
+            font-size: 4vw;
+            font-weight: 700;
+            text-align: center;
+        }       
+        #logout, #login {
+            float: right;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            margin-right: 5px;
+            width: 115px;
+            text-align: center;
+            height: 40px;
+        } 
     }
+    @media screen and (max-width: 900px) and (min-width: 475px) {
+        #offline {
+            display: block;
+            position: absolute;
+            left: 30%;
+            right: 30%;
+            font-size: 3.5vw;
+            font-weight: 700;
+            text-align: center;
+            padding-top: 1%;
+        }
+    }
+    @media screen and (min-width: 900px){
+        #offline {
+            display: block;
+            position: absolute;
+            left: 30%;
+            right: 30%;
+            font-size: 3vw;
+            font-weight: 700;
+            text-align: center;
+            padding-top: 3px;
+        }
+    }
+    @media screen and (min-width: 1400px){
+        #offline {
+            display: block;
+            position: absolute;
+            left: 30%;
+            right: 30%;
+            font-size: 2vw;
+            font-weight: 700;
+            text-align: center;
+            padding-top: 3px;
+        }
+    }
+    
 
 </style>
