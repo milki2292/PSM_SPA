@@ -152,7 +152,6 @@ export default {
       var loader = document.getElementById("loader")
       loader.hidden = false
      
-      var app = this
       var url = `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=${this.location}`
       var config = {
         headers: {
@@ -168,6 +167,8 @@ export default {
       }else if (this.sortBy){
         `${url}&sort_by=${this.sortBy}`
       }
+
+      var app = this
       
       fetch(url, { headers: config.headers })
           .then(response => response.json())
