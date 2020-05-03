@@ -21,16 +21,12 @@ export default {
             const path = '/';
             if (this.$route.path !== path) this.$router.push(path);
         },
-        goHomea(a) {
-            const path = '/';
-            if (a.path !== path) this.$router.push(path);
-        },
         logout() {
-            let a = this.$router;
+            let app = this
             firebase.auth().signOut()
                 .then(function () {
                     console.log("logout");
-                    this.goHomea(a)('/');
+                    app.goHome();
                 })
                 .catch(function (error) {
                     console.log(error)
