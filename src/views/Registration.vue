@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div id="a">
-      <div class="rejestracjaAwatar"><font-awesome-icon icon="hamburger" />Rejestracja</div>
+      <div class="registerAvatar"><font-awesome-icon icon="hamburger" />Rejestracja</div>
       <h4 id="differentPasswords" style="color:red; margin-top:100px;" hidden>Podane hasła są różne!</h4>
       <h4 id="invalidEmailFormat" style="color:red; margin-top:100px;" hidden>Błędny format adresu e-mail!</h4>
       <h4 id="passwordTooWeak" style="color:red; margin-top:100px;" hidden>Hasło musi składać się przynajmniej z 6 znaków!</h4>
@@ -123,8 +123,8 @@ export default {
 </script>
 
 <style scoped>
-.rejestracjaAwatar{
-        width:192px;
+.registerAvatar{
+        width:70%;
         margin:0 auto;
         font-size: 32px;
         padding-top:20px;

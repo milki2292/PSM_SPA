@@ -1,28 +1,33 @@
 <template>
   <div class="container">
     <div>
-      <img v-bind:src="restaurant.image_url" width="60%" height="60%" />
+      <img id="topPhoto" v-bind:src="restaurant.image_url"/>
     </div>
     <br>
-    <div style="font-size: 3vw;">
+    <div id="restaurantName">
       {{ this.restaurant.name }}
     </div>
-    <div style="font-size: 20px">
+    <div class="restaurantCategory">
       {{ this.restaurant.categories[0].title }}
     </div>
-    <div style="font-size: 20px">
+    <div id="restaurantLocation">
       {{ this.restaurant.location.city }}, {{ restaurant.location.address1 }}
     </div>
     <br>
-    <div style="width: 50%; margin: 0 auto;font-size: 20px">
-      <div style="float: left; width: 33%; margin: 0 auto;">
-        {{ this.restaurant.rating }}/5 ocena
+    <div style="width: 70%; margin: 0 auto;font-size: 20px">
+      <div class="restaurantInfo">
+        Ocena: {{ this.restaurant.rating }}/5
       </div>
-      <div style="float: left; width: 33%; margin: 0 auto;"> ceny :{{ this.restaurant.price }}</div>
-      <div style="float: left; width: 33%; margin: 0 auto;">{{ this.restaurant.review_count }} opinii</div>
-      <div style="clear: both;"></div>
+      <div class="restaurantInfo" style=border-left:none;> Ceny :{{ this.restaurant.price }}</div>
+      <div class="restaurantInfo" style=border-left:none;>{{ this.restaurant.review_count }} Opinie/i</div>
+      <div style=clear:both;></div>
     </div>
-    <div style="font-size: 20px">
+    <div class="restaurantCategory">
+    <p>
+      <button @click="addToFavourites()" id="favourite" class="btn btn-login btn-lg">
+        Dodaj do ulubionych
+      </button>
+    </p>
       <br>
       Galeria
     </div>
@@ -34,11 +39,6 @@
       <img v-bind:src="restaurant.photos[2]" width="60%" height="60%" />
     </div>
     <br>
-    <p>
-      <button @click="addToFavourites()" id="favourite" class="btn btn-login btn-lg">
-        dodaj do ulubionych
-      </button>
-    </p>
   </div>
 </template>
 
@@ -108,6 +108,62 @@ export default {
 };
 </script>
 <style >
+#favourite{
+  margin-top: 30px;
+}
+.restaurantInfoBorder{
+  border-left:none;
+}
+@media screen and (max-width: 990px ) {
+  #topPhoto{
+    width:60%;
+  }
+  #restaurantName{
+    font-size:6vw;
+    font-weight: 700;
+  }
+  #restaurantLocation{
+    font-size:4vw;
+    font-weight: 400;
+  }
+  .restaurantCategory{
+    font-size:5vw;
+    font-weight: 500;
+  }
+  .restaurantInfo{
+    float: left; 
+    width: 33%; 
+    margin: 0 auto; 
+    border: 3px solid rgb(92, 91, 91);
+    font-size: 2.5vw;
+    font-weight: 700;
+  }
+}
+@media screen and (min-width: 990px ) {
+  #topPhoto{
+    width:30%;
+  }
+  #restaurantName{
+    font-size:3vw;
+    font-weight: 700;
+  }
+  #restaurantLocation{
+    font-size:2vw;
+    font-weight: 400;
+  }
+  .restaurantCategory{
+    font-size:2.5vw;
+    font-weight: 500;
+  }
+  .restaurantInfo{
+    float: left; 
+    width: 33%; 
+    margin: 0 auto; 
+    border: 3px solid rgb(92, 91, 91);
+    font-size: 1.5vw;
+    font-weight: 700;
+  }
+}
 .container {
   width: 100%;
   align-content: center;

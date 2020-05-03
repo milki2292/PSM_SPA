@@ -13,14 +13,14 @@
     <p>Ulubione</p>
         
         <div @click="goRestaurant(restaurant.id)" v-bind:key="restaurant.id" v-for="restaurant in this.restaurants" class="restaurants" >
-            <div id="res-name">{{ restaurant.name }}<br>
+            <div class="res-name">{{ restaurant.name }}<br>
                 {{ restaurant.location.city }}, {{ restaurant.location.address1 }}
             </div>
-            <div id="res-title">{{restaurant.categories[0].title}}</div> 
-            <div id="res-img">
+            <div class="res-title">{{restaurant.categories[0].title}}</div> 
+            <div class="res-img">
                 <img v-bind:src="restaurant.image_url" width="100%" height="100%" />
             </div>
-            <div id="c"></div>
+            <div class="c"></div>
         </div> 
         
     </div>
@@ -83,21 +83,5 @@ export default {
 .open .dropdown-toggle.btn-danger {
   background-color: hsl(24, 83%, 45%) !important;
   background-repeat: repeat-x;
-}
-.restaurants {
-  background-color: white;
-  border-style: solid;
-  border-width: 1px;
-  margin-top: 15px;
-  box-shadow: 10px 10px 16px -7px rgba(148, 138, 148, 1);
-  height: auto;
-}
-.restaurants:hover{
-  background-color: #e04242;
-  cursor: pointer;
-}
-.restaurants > a {
-  color: rgb(0, 0, 0);
-  text-decoration: none;
 }
 </style>

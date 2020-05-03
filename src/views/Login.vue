@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div id="a">
-            <div class="logowanieAwatar"><font-awesome-icon icon="hamburger" />Logowanie</div>
+            <div class="loginAvatar"><font-awesome-icon icon="hamburger" />Logowanie</div>
             <h4></h4>
             <h4 id="invalidLoginPrompt" style="color:red; margin-top:100px;" hidden>Błędny Login i/lub Hasło...</h4>
             <input type="textfield" id="email" placeholder="Email" />
@@ -89,8 +89,8 @@ export default {
 </script>
 
 <style scoped>
-    .logowanieAwatar{
-        width:192px;
+    .loginAvatar{
+        width:70%;
         margin:0 auto;
         font-size: 32px;
         padding-top:100px;
