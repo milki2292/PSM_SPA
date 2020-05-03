@@ -42,11 +42,13 @@ export default {
           document.getElementById("login").hidden = true;
           document.getElementById("logout").hidden = false;
           document.getElementById("profile").hidden = false;
+          document.getElementById("favourite").hidden = false;
            
         } else {
           document.getElementById("login").hidden = false;
           document.getElementById("logout").hidden = true;
           document.getElementById("profile").hidden = true;
+          document.getElementById("favourite").hidden = true;
         }
     });
 

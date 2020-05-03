@@ -56,9 +56,8 @@ export default {
         "Bearer fkbp8a45dtXLiROWZHIh6ruBZVTOtm_oNzqlj2NzfDskFb5HMCFjRBEJgkIgJkv-Q0H7IFkT3LWgzDWoNbjsHnZ5WVECz-Fr5lYhR_hYtE_PAPrrwBNeLgtn-MOmXnYx",
     };
   },
-
   mounted() {
-    this.getRestaurant()
+    this.getRestaurant();
   },
   methods: {
     getRestaurant(){
@@ -78,8 +77,12 @@ export default {
     },
     addToFavourites() {
       var user = firebase.auth().currentUser;
-      var docRef = this.db.collection("favourites").doc(user.uid);
       var restaurant = this.restaurant;
+      try{
+        var docRef = this.db.collection("favourites").doc(user.uid);
+      }catch(error){
+        alert("Zaloguj się, aby dodać do ulubionych")
+      }
       if (user) {
         docRef.get().then(function (doc) {
           if (doc.exists) {
